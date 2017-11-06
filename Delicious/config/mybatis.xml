@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+   <!-- 配置映射类的别名 
+ 	<typeAliases>
+      <typeAlias alias="User" type="com.mucfc.model.User"/> 
+   </typeAliases>  
+   -->
+   <!--
+   <settings>
+	  <setting name="cacheEnabled" value="true"/>
+	  <setting name="lazyLoadingEnabled" value="true"/>
+	  <setting name="multipleResultSetsEnabled" value="true"/>
+	  <setting name="useColumnLabel" value="true"/>
+	  <setting name="useGeneratedKeys" value="false"/>
+	  <setting name="autoMappingBehavior" value="PARTIAL"/>
+	  <setting name="autoMappingUnknownColumnBehavior" value="WARNING"/>
+	  <setting name="defaultExecutorType" value="SIMPLE"/>
+	  <setting name="defaultStatementTimeout" value="25"/>
+	  <setting name="defaultFetchSize" value="100"/>
+	  <setting name="safeRowBoundsEnabled" value="false"/>
+	  <setting name="mapUnderscoreToCamelCase" value="false"/>
+	  <setting name="localCacheScope" value="SESSION"/>
+	  <setting name="jdbcTypeForNull" value="OTHER"/>
+	  <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
+    </settings>
+    -->
+   <!-- 配置Mapper文件的路径 -->
+   <mappers>
+       <mapper resource="com/zz/ccy/mapping/WeixinUserInfoMapper.xml"/>
+       <mapper resource="com/zz/ccy/mapping/WeixinUserMsbMapper.xml"/>
+       <mapper resource="com/zz/ccy/mapping/WeixinUserWzMapper.xml"/>
+       <mapper resource="com/zz/ccy/mapping/WeixinNoticeMapper.xml"/>
+       <mapper resource="com/zz/ccy/mapping/WeixinStoreMapper.xml"/>
+       <mapper resource="com/zz/ccy/mapping/ArticleInfoMapper.xml"/>
+       <mapper resource="com/zz/ccy/mapping/BillAndInfoMapper.xml"/>
+       <mapper resource="com/zz/ccy/mapping/StoreInfoMapper.xml"/>
+       <mapper resource="com/zz/ccy/mapping/ChefInfoMapper.xml"/>
+       <mapper resource="com/zz/ccy/mapping/GreensInfoMapper.xml"/>
+       <mapper resource="com/zz/ccy/mapping/WeixinStoreupdateMapper.xml"/>
+       <mapper resource="com/zz/ccy/mapping/CommentInfoMapper.xml"/>
+         <mapper resource="com/zz/ccy/mapping/WeixinMapper.xml"/>
+   </mappers>
+   
+</configuration>

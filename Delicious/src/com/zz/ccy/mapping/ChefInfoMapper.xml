@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+例如namespace="me.gacl.mapping.userMapper"就是me.gacl.mapping(包名)+userMapper(userMapper.xml文件去除后缀)
+ -->
+<mapper namespace="com.zz.ccy.mapping.ChefInfoMapper">
+
+     <resultMap type="com.zz.ccy.entity.ChefEntity" id="ChefInfoResult">
+       <id column="id" jdbcType="INTEGER" property="id"/>
+       <result column="userid" jdbcType="INTEGER" property="userid"/>
+       <result column="tel" jdbcType="VARCHAR" property="tel"/>
+       <result column="name" jdbcType="VARCHAR" property="name"/>
+       <result column="headimg" jdbcType="VARCHAR" property="headimg"/>
+       <result column="level" jdbcType="INTEGER" property="level"/>
+       <result column="collectnum" jdbcType="INTEGER" property="collectnum"/>
+       <result column="tags" jdbcType="VARCHAR" property="tags"/>
+       <result column="status" jdbcType="INTEGER" property="status"/>
+       <result column="timec" jdbcType="VARCHAR" property="timec"/>
+     </resultMap>
+    
+    <!-- 根据店铺id获取对应店铺轮播图片 -  lifei添加返回cid-->
+    <select id="getChefByStoreId" parameterType="int" resultMap="ChefInfoResult">
+        select c.id,c.name,c.headimg,c.level,c.tags from d_wx_chef c where c.userid= #{userid}
+    </select>
+    
+    <!-- 根据厨师id获取厨师信息 -->
+    <select id="getChefInfoById" parameterType="int" resultType="com.zz.ccy.entity.ChefEntity">
+       select * from d_wx_chef c where c.id=#{chefId} 
+    </select>
+    <!-- lf -->
+    <select id="ischef"  statementType="CALLABLE" parameterType="integer" resultType="java.lang.Integer">
+    {call ischef(#{userid})}
+    
+    </select>
+    
+    
+    <insert id="addChef" >
+    
+    insert into d_wx_chef(userid,tel,name,headimg,level,tags,status,collectnum,timec) values
+    (#{userid},#{tel},#{name},#{headimg},#{level},#{tags},#{status},${collectnum},#{timec})
+    
+    </insert>
+    
+    <select id="getChefList" parameterType="integer" resultMap="ChefInfoResult">
+    
+    select id,userid,tel,name,headimg,level,tags,status,collectnum,timec from d_wx_chef where userid=#{userid}
+    
+    </select>
+    
+    <select id="getChefById" parameterType="integer" resultMap="ChefInfoResult">
+    
+    select id,userid,tel,name,headimg,level,tags,status,collectnum,timec from d_wx_chef where id=#{id}
+    
+    </select>
+    
+    <update id="updateChef">
+    
+    update d_wx_chef set tel=#{tel},name=#{name},headimg=#{headimg},tags=#{tags},timec=#{timec} where id=#{id}
+    
+    </update>
+    
+    <!-- 根据id删除厨师 -->
+    
+    <delete id="delChefById" parameterType="integer">
+    delete d_wx_chef where id=#{id}
+    </delete>
+    
+    <!-- lf -->
+    
+    
+    
+    
+    
+    
+</mapper>

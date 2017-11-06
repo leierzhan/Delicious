@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+例如namespace="me.gacl.mapping.userMapper"就是me.gacl.mapping(包名)+userMapper(userMapper.xml文件去除后缀)
+ -->
+<mapper namespace="com.zz.ccy.mapping.StoreInfoMapper">
+
+     <resultMap type="com.zz.ccy.entity.StoreInfo" id="StoreInfoResult">
+       <id column="id" jdbcType="INTEGER" property="id"/>
+       <result column="storename" jdbcType="VARCHAR" property="storename"/>
+       <result column="imgsurl" jdbcType="VARCHAR" property="imgsurl"/>
+       <result column="level" jdbcType="INTEGER" property="level"/>
+       <result column="per_capite" jdbcType="VARCHAR" property="per_capite"/>
+       <result column="lunboimg" jdbcType="VARCHAR" property="lunboimg"/>
+       <result column="address" jdbcType="VARCHAR" property="address"/>
+       <result column="storerule" jdbcType="VARCHAR" property="storerule"/>
+       <result column="latitude" jdbcType="VARCHAR" property="latitude"/>
+       <result column="longitude" jdbcType="VARCHAR" property="longitude"/>
+       <result column="tel" jdbcType="VARCHAR" property="tel"/>
+       <result column="calture" jdbcType="VARCHAR" property="calture"/>
+       <result column="busiiness_licens" jdbcType="VARCHAR" property="busiiness_licens"/>
+       <result column="distance" jdbcType="VARCHAR" property="distance"/>
+       <result column="status" jdbcType="VARCHAR" property="status"/>
+     </resultMap>
+    <!-- 查询店铺列表信息 -->
+    <select id="getStoreList" resultMap="StoreInfoResult">
+        select s.id,s.imgsurl,s.storename,s.level,s.per_capite,s.storerule,s.address,s.latitude,s.longitude,s.tel from d_wx_store s
+    </select>
+    <!-- 根据经纬度查询附近店铺列表信息 -->
+    <select id="getStoreListByJWD" resultMap="StoreInfoResult" parameterType="java.util.Map">
+        SELECT s.id,s.imgsurl,s.storename,s.level,s.per_capite,concat('满',r.man,'减',r.di) as storerule,s.address,s.latitude,s.longitude,s.tel,
+        Round(SQRT(power(111.2 * (s.longitude - #{latitude}),2)+power(111.2 * (#{latitude} - s.longitude) * COS(s.latitude/57.3),2)),2) AS distance 
+             FROM d_wx_store s,d_wx_storerule r where s.storerule=r.id ORDER BY distance;
+    </select>
+    <!-- 根据店铺id获取对应店铺轮播图片 -->
+    <select id="getStoreCoverUrls" parameterType="int" resultType="string">
+        select s.lunboimg from d_wx_store s where s.id= #{storeId}
+    </select>
+    <!-- 根据关键字搜索响应店铺集合 -->
+    <select id="getSearchStoreList" parameterType="string" resultMap="StoreInfoResult">
+       select s.id,s.imgsurl,s.storename,s.level,s.per_capite,s.storerule,s.address,s.latitude,s.longitude,s.tel from d_wx_store s where s.storename like #{keyWord}
+    </select>
+    <!-- 根据店铺id获取店铺信息 -->
+    <select id="getStoreInfoById" parameterType="int" resultType="com.zz.ccy.entity.StoreInfo">
+       select s.id,s.imgsurl,s.storename,s.level,s.per_capite,s.storerule,s.address,s.latitude,s.longitude,s.tel from d_wx_store s where s.id=#{storeId}
+    </select>
+</mapper>
