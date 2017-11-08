@@ -62,7 +62,8 @@ public class MerchantListHandler{
 	@RequestMapping("sQ")
 	public ModelAndView sQ(@RequestParam("code") String code,HttpServletRequest request,HttpServletResponse response){
 		System.out.println("“≥√Ê ⁄»®---");
-		ModelAndView r=null;
+		ModelAndView r=null;    
+		System.out.println("111");
 		String openid="-------------";
 		try{
 		Cookie co=	getCookieByName(request, "openid");
