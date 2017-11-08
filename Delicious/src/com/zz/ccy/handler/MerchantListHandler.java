@@ -49,7 +49,7 @@ public class MerchantListHandler{
 	 * @param request
 	 * @param response
 	 * @return
-	 *//** 李飞
+	 *//** 李飞shuage
 	* @Title: sQ 
 	* @Description: TODO(商家中心进入用户授权处理
 	* @param @param code
