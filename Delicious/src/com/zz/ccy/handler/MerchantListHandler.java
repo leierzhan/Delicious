@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.zz.ccy.entity.ChefEntity;
 import com.zz.ccy.entity.OauthAccessToken;
 import com.zz.ccy.entity.StoreInfo;
+import com.zz.ccy.entity.User;
 import com.zz.ccy.entity.WeixinUserInfo;
 import com.zz.ccy.lf.entity.Greens;
 import com.zz.ccy.lf.entity.Jsconfig;
@@ -33,6 +34,7 @@ import com.zz.ccy.lf.entity.StoreInfoupdate;
 import com.zz.ccy.lf.entity.Storerule;
 import com.zz.ccy.service.MerchantService;
 import com.zz.ccy.service.UserHelpService;
+import com.zz.ccy.service.UserService;
 import com.zz.ccy.util.AdvancedUtil;
 
 @RequestMapping("/merchant")
@@ -42,6 +44,9 @@ public class MerchantListHandler{
 	private UserHelpService userHelpService;
 	@Autowired
 	private MerchantService mer;
+	@Autowired
+	private UserService us;
+	
 	
 	/**
 	 * 
@@ -49,7 +54,6 @@ public class MerchantListHandler{
 	 * @param request
 	 * @param response
 	 * @return
-<<<<<<< HEAD
 	 *//** 李飞shuage
 	* @Title: sQ 
 	* @Description: TODO(商家中心进入用户授权处理
@@ -226,7 +230,7 @@ public class MerchantListHandler{
 			
 			if(!co.equals(null)){
 				openid= co.getValue();
-				r=new ModelAndView("go","page","../merchant/goAddCheftest");
+				r=new ModelAndView("go","page","../merchant/goAddChef");
 			}else{
 				AdvancedUtil au=new AdvancedUtil();
 				OauthAccessToken o = au.getOauthAccessToken(code);
@@ -235,7 +239,7 @@ public class MerchantListHandler{
 				Cookie c=new Cookie("openid", openid);
 				c.setMaxAge(10);
 				response.addCookie(c);
-				r=new ModelAndView("go","page","../merchant/goAddCheftest");
+				r=new ModelAndView("go","page","../merchant/goAddChef");
 			}
 
 		}catch (NullPointerException e){
@@ -248,7 +252,7 @@ public class MerchantListHandler{
 			Cookie c=new Cookie("openid", openid);
 			c.setMaxAge(10);
 			response.addCookie(c);
-			r=new ModelAndView("go","page","../merchant/goAddCheftest");
+			r=new ModelAndView("go","page","../merchant/goAddChef");
 		}finally{
 			request.getSession().setAttribute("openid", openid);
 		}
@@ -331,6 +335,12 @@ public class MerchantListHandler{
 		 }else if(status==0){
 			m=new ModelAndView("merchant/shz");
 		 }else{
+			 
+			StoreInfo store= mer.getStoreinfoByuserid(userid);
+			
+			WeixinUserInfo user=us.getUserInfoById(userid);
+			 mp.put("userinfo", user);
+			 mp.put("storeinfo", store);
 			 m=new ModelAndView("merchant/chefCore",mp);
 		 }
 		   return m;
@@ -340,6 +350,7 @@ public class MerchantListHandler{
 	   @RequestMapping("goAddChef")
 	   private ModelAndView goAddChef(HttpServletRequest request){
 		     String openid=(String)request.getSession().getAttribute("openid");
+			 
 			 
 			 Map<String,Object> mp=new HashMap<String, Object>();
 			 
