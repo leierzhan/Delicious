@@ -22,6 +22,14 @@
        <result column="distance" jdbcType="VARCHAR" property="distance"/>
        <result column="status" jdbcType="VARCHAR" property="status"/>
      </resultMap>
+     
+         <!-- 查询店铺列表信息 -->
+    <select id="getStoreByUserid" parameterType="integer" resultMap="StoreInfoResult">
+        select *
+        from d_wx_store s  left join storeandchef sf on s.id=sf.storeid
+         where sf.chefid=(select id from d_wx_chef where userid=#{userid})
+    </select>
+     
     <!-- 查询店铺列表信息 -->
     <select id="getStoreList" resultMap="StoreInfoResult">
         select s.id,s.imgsurl,s.storename,s.level,s.per_capite,s.storerule,s.address,s.latitude,s.longitude,s.tel from d_wx_store s

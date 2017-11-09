@@ -160,6 +160,11 @@ public class MerchantServiceImpl implements MerchantService{
 	    }     
 	    return sb.toString();     
 	 }
+	@Override
+	public StoreInfo getStoreinfoByuserid(int userid) {
+		// TODO Auto-generated method stub
+		return mer.getStoreinfoByuserid(userid);
+	}
 
 
 }

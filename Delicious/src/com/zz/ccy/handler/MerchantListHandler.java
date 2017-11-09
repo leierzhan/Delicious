@@ -330,7 +330,7 @@ public class MerchantListHandler{
 		 Map<String,Object> mp=new HashMap<String, Object>();
 		 
 		 int userid= mer.getUserIdByOpenid(openid);
-		 
+		 System.out.println("userid:"+userid);
 		 request.getSession().setAttribute("userid", userid);
 
 		   ModelAndView m=null;
@@ -344,7 +344,12 @@ public class MerchantListHandler{
 		 }else if(status==0){
 			m=new ModelAndView("merchant/shz");
 		 }else{
-			 m=new ModelAndView("merchant/chefCore",mp);
+			WeixinUserInfo userinfo= mer.getUserByOpenid(openid);
+			StoreInfo store=mer.getStoreinfoByuserid(userid);
+
+			mp.put("storeinfo", store);
+			mp.put("userinfo", userinfo);
+			m=new ModelAndView("merchant/chefCore",mp);
 		 }
 		   return m;
 	   }

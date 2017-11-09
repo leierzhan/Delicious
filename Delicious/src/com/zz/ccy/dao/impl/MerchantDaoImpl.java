@@ -180,5 +180,11 @@ public class MerchantDaoImpl implements MerchantDao{
 	    System.out.println("************return="+number+"**********"); 
 		  return number;
 	}
+
+	@Override
+	public StoreInfo getStoreinfoByuserid(int userid) {
+		
+		return this.getSession().selectOne("com.zz.ccy.mapping.StoreInfoMapper.getStoreByUserid",userid);
+	}
 	   
 }

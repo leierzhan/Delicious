@@ -282,6 +282,12 @@ public interface MerchantDao {
 	int ischef(int userid);
 	
 	
+	//根据user id进行查询user类型
+	StoreInfo getStoreinfoByuserid(int userid);
+	
+	
+	
+	
 	
 	
 }
