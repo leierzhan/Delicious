@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+例如namespace="me.gacl.mapping.userMapper"就是me.gacl.mapping(包名)+userMapper(userMapper.xml文件去除后缀)
+ -->
+<mapper namespace="com.zz.ccy.mapping.WeixinMapper">
+    <!-- 在select标签中编写查询的SQL语句， 设置select标签的id属性为getUser，id属性值必须是唯一的，不能够重复
+    使用parameterType属性指明查询时使用的参数类型，resultType属性指明查询返回的结果集类型
+    resultType="me.gacl.domain.User"就表示将查询结果封装成一个User类的对象返回
+    User类就是users表所对应的实体类
+    -->
+    <!-- *********************************************店铺信息收藏和历史公用一个xml
+           
+     -->
+	<resultMap type="com.zz.ccy.lf.entity.Jsconfig" id="jsconfig">
+	<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="timestamp" jdbcType="VARCHAR" property="timestamp" />
+		<result column="noncestr" jdbcType="VARCHAR" property="noncestr" />
+		<result column="signature" jdbcType="VARCHAR" property="signature" />
+		<result column="apis" jdbcType="VARCHAR" property="apis" />
+		<result column="timec" jdbcType="VARCHAR" property="timec" />
+	</resultMap>
+
+     
+              <!-- 用户通知列表 -->
+     <select id="getJsconfig" parameterType="integer" resultMap="jsconfig">
+     
+      select * from d_wx_jsconfig where id=#{id}
+       
+     </select>
+  
+     
+     
+     
+     </mapper>

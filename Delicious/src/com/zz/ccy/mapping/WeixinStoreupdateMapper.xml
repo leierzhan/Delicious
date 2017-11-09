@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+例如namespace="me.gacl.mapping.userMapper"就是me.gacl.mapping(包名)+userMapper(userMapper.xml文件去除后缀)
+ -->
+<mapper namespace="com.zz.ccy.mapping.WeixinStoreupdateMapper">
+    <!-- 在select标签中编写查询的SQL语句， 设置select标签的id属性为getUser，id属性值必须是唯一的，不能够重复
+    使用parameterType属性指明查询时使用的参数类型，resultType属性指明查询返回的结果集类型
+    resultType="me.gacl.domain.User"就表示将查询结果封装成一个User类的对象返回
+    User类就是users表所对应的实体类
+    -->
+    <!-- *********************************************店铺审核表
+           
+     -->
+
+     
+     
+     <resultMap type="com.zz.ccy.lf.entity.StoreInfoupdate" id="storeinfo">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="cityid" jdbcType="INTEGER" property="cityid" />
+		<result column="storename" jdbcType="VARCHAR" property="storename" />
+		<result column="address" jdbcType="VARCHAR" property="address" />
+		<result column="latitude" jdbcType="VARCHAR" property="latitude" />
+		<result column="longitude" jdbcType="VARCHAR" property="longitude" />
+		<result column="tel" jdbcType="VARCHAR" property="tel" />
+		<result column="imgsurl" jdbcType="VARCHAR" property="imgsurl" />
+		<result column="lunboimg" jdbcType="VARCHAR" property="lunboimg" />
+		<result column="[level]" jdbcType="INTEGER" property="level" />
+		<result column="per_capite" jdbcType="INTEGER" property="per_capite" />
+		<result column="calture" jdbcType="VARCHAR" property="calture"/>
+		<result column="busiiness_licens" jdbcType="VARCHAR" property="busiiness_licens"/>
+		<result column="storerule" jdbcType="INTEGER" property="storerule" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="userid" jdbcType="INTEGER" property="userid" />
+		<result column="timec" jdbcType="VARCHAR" property="timec" />
+	</resultMap>
+	
+	<select id="getStoreUpdateinfo" parameterType="integer" resultMap="storeinfo">
+	
+	select  top 1 * from d_wx_store_update where userid=#{userid} order by timec desc
+	
+	</select>
+	
+	
+	
+	<!-- 店铺消费规则 -->
+	<resultMap type="com.zz.ccy.lf.entity.Storerule" id="storerule">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="man" jdbcType="INTEGER" property="man" />
+		<result column="di" jdbcType="INTEGER" property="di" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+	</resultMap>
+	
+	<select id="getStoreruleAll" resultMap="storerule">
+	
+	select * from d_wx_storerule where status=0
+	
+	</select>
+	
+	
+	<insert id="addStoreupdate"  useGeneratedKeys="true" keyProperty="id" parameterType="com.zz.ccy.lf.entity.StoreInfoupdate" >
+	insert into d_wx_store_update(cityid,storename,address,latitude,longitude,tel,imgsurl,level,per_capite,lunboimg,calture,busiiness_licens,storerule,status,userid,timec) values
+	(#{cityid},#{storename},#{address},#{latitude},#{longitude},#{tel},#{imgsurl},#{level},#{per_capite},#{lunboimg},#{calture},#{busiiness_licens},#{storerule},#{status},#{userid},#{timec})
+	</insert>
+     
+     
+     
+     
+     
+
+     
+     
+     </mapper>
