@@ -117,7 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </ul>
     </div>
     <div style="text-align:center;margin-bottom:15px;">
-          <span class="loadmore" style="font-size:14px;">点击加载更多</span>
+        <span class="loadmore" style="font-size:14px;">点击加载更多</span>
     </div>
   </div>
     <!-- 默认必须要执行$.init(),实际业务里一般不会在HTML文档里执行，通常是在业务页面代码的最后执行 -->

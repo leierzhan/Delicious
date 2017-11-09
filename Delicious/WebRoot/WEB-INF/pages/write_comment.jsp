@@ -4,7 +4,6 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -19,36 +18,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" type="text/css" href="../css/global.css">
     <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
     <script src="../js/jquery.min.js"></script>
-    <style>
-    </style>
     <script type="text/javascript">
       $(function(){
     	  $(".submit").click(function(){
+    		var storeId=$("input[name='storeId']").val();  
+    		var userId=$("input[name='userId']").val();  
     		var comment=$("textarea[name='comment']").val();
-    		$("ul[class='comment']").append("<li style='padding-top:16px;'>"+
-                 "<div><img src='../image/zhuti.jpg' style='vertical-align:middle;width:40px;height:40px;border-radius:20px;margin-left:16px;'>"+
-                 "<span style='margin-left:16px;font-size:16px;'>"+comment+"</span>"+
-                 "</div><div style='margin-left:16px;margin-right:16px;margin-top:10px;'>"+
-                 "<span style='font-size:14px;margin-left:16px;'>留言</span>"+
-                 "</div><div style='margin-left:16px;margin-right:16px;margin-top:10px;'>"+
-                 "<span style='font-size:14px;margin-left:16px;color:#CDCDCD;'>3小时前</span>"+
-                 "<a style='font-size:14px;margin-left:14px;color:#22B682;'>删除</a>"+
-                 "</div><hr style='height:1px;background:#E7E7E7;border:none;'>"+
-                 "</li>");  
-    		$.ajax({
-				type:"get",
-				url:"http://www.cnmjw.com.cn/Delicious/storeHandler/saveComment",
-                 data:{"storeId":storeId,"userId":userId,"content":comment,"data":new Date()},
-                 success:function(data){
-				},
-				error:function(data){
-				}
-			});
+    		if(comment.length>0){
+    			$("ul[class='comment']").append("<li style='padding-top:16px;'>"+
+    	                 "<div><img src='../image/zhuti.jpg' style='vertical-align:middle;width:40px;height:40px;border-radius:20px;margin-left:16px;'>"+
+    	                 "<span style='margin-left:16px;font-size:16px;'>"+comment+"</span>"+
+    	                 "</div><div style='margin-left:16px;margin-right:16px;margin-top:10px;'>"+
+    	                 "<span style='font-size:14px;margin-left:16px;'>留言</span>"+
+    	                 "</div><div style='margin-left:16px;margin-right:16px;margin-top:10px;'>"+
+    	                 "<span style='font-size:14px;margin-left:16px;color:#CDCDCD;'>3小时前</span>"+
+    	                 "<a style='font-size:14px;margin-left:14px;color:#22B682;'>删除</a>"+
+    	                 "</div><hr style='height:1px;background:#E7E7E7;border:none;'>"+
+    	                 "</li>"); 
+   	    		$.ajax({
+   					type:"get",
+   					url:"http://192.168.5.233:8080/Delicious/storeHandler/saveComment",
+                       data:{"storeId":storeId,"userId":userId,"content":comment,"data":new Date()},
+   					success:function(data){
+   					},
+   					error:function(data){
+   					}
+   				});
+    		}else{
+    			$("textarea[name='comment']").attr("placeholder","请输入评论");
+    		}
     	  });
 	  });
     </script>
   </head>
   <body>
+  <input type="hidden" name="storeId" value="${storeId }">
+  <input type="hidden" name="userId" value="${userId }">
      <header class="bar bar-nav">
        <h1 class="title">${storeInfo.storename }</h1>
      </header>
