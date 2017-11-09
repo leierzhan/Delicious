@@ -142,9 +142,7 @@ public class MerchantListHandler{
 		 ModelAndView m=null;
 		 
 		int userstatus= mer.isMerchantUser(user.getId());
-		
 		//返回参数解释 0代表审核中，1，代表审核失败，2代表审核通过，3代表新用户没有提交申请
-		
 		if(userstatus==0){
 			
 		m=new ModelAndView("merchant/shz",mp);
@@ -179,8 +177,7 @@ public class MerchantListHandler{
 	   private ModelAndView goMerchantSys(HttpServletRequest request){
 		   String openid=(String) request.getSession().getAttribute("openid");
 		   System.out.println("openid:"+openid);
-		   System.out.println("openid:"+openid);
-		   WeixinUserInfo user=mer.getUserByOpenid(openid);
+  WeixinUserInfo user=mer.getUserByOpenid(openid);
 		   
 		   request.getSession().setAttribute("userid",user.getId());
 		
@@ -189,9 +186,7 @@ public class MerchantListHandler{
 		 ModelAndView m=null;
 		 
 		int userstatus= mer.isMerchantUser(user.getId());
-		
 		//返回参数解释 0代表审核中，1，代表审核失败，2代表审核通过，3代表新用户没有提交申请
-		
 		if(userstatus==0){
 			
 		m=new ModelAndView("merchant/shz",mp);
@@ -204,6 +199,7 @@ public class MerchantListHandler{
 		}else if(userstatus==2){
 			 Jsconfig js=mer.getJsConfig(1);
 			MerchantInfo is= mer.isMerchant(user.getId());
+			request.getSession().setAttribute("storeid",is.getStoreid());
 			   StoreInfo s=mer.getStoreInfoById(is.getStoreid());
 			   mp.put("jsconfig",js);
 		   	   mp.put("store",s);
@@ -217,7 +213,6 @@ public class MerchantListHandler{
 		}
 			
 		   return m;
-		   
 	   }
 	   
 		@RequestMapping("chefSq")
