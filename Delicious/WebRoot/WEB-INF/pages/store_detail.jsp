@@ -92,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					url:"http://www.cnmjw.com.cn/Delicious/storeHandler/addCommentZan",
                     data:{"commentId":commentId,"data":new Date()},
 					success:function(data){
-
+                      
 					},
 					error:function(data){
 					}
@@ -205,14 +205,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <div style="margin-left:16px;margin-right:16px;margin-top:10px;">
             <span style="font-size:14px;margin-left:16px;">${com.comment }</span>
           </div>
-          <div style="margin-left:32px;margin-right:16px;margin-top:10px;">
-            <img src="https://r.sinaimg.cn/large/article/1549f54583792d5496658c35abe87d9d.jpg" style="width:55px;height:55px;">
-            <img src="https://r.sinaimg.cn/large/article/1549f54583792d5496658c35abe87d9d.jpg" style="width:55px;height:55px;">
-            <img src="https://r.sinaimg.cn/large/article/1549f54583792d5496658c35abe87d9d.jpg" style="width:55px;height:55px;">
-          </div>
           <div style="display:inline;">
             <span style="font-size:14px;margin-left:32px;">赞</span>
-            <span class="zanshow" style="font-size:14px;margin-left:-5px;">7</span>
+            <span class="zanshow" style="font-size:14px;margin-left:-5px;">${com.zan }</span>
             <img class="img_zan" name="${com.id }" style="width:20px;vertical-align:middle;margin-left:25px;margin-top:3px;" src="../image/love.png">
           </div>
           <hr style="height:1px;background:#E7E7E7;border:none;margin-top:5px">

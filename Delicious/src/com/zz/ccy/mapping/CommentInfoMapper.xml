@@ -47,8 +47,8 @@
     
     <!-- 根据店铺id获取最新评论4条 -->
     <select id="getCommentFour" parameterType="int" resultMap="CommentInfoResult">
-       select top 4 * from d_wx_comment c,d_wx_user_info u where c.storeid=#{storeId} and c.id>#{commentId} and c.userid=u.id 
-       order by c.id
+       select top 4 * from d_wx_comment c,d_wx_user_info u where c.storeid=#{storeId}  and c.userid=u.id 
+       order by c.id desc
     </select>
     <!-- 获取评论点赞数 -->
     <select id="getCommentZanCountById" parameterType="int" resultType="int">
@@ -65,6 +65,6 @@
     
     <!-- 保存评论 -->
     <insert id="saveComment" parameterType="java.util.Map">
-       insert into d_wx_comment (storeid,comment,grade,zan,userid,status) values (#{storeId},#{content},1,0,#{userid},0)
+       insert into d_wx_comment (storeid,comment,grade,zan,userid,status) values (#{storeId},#{content},1,0,#{userId},0)
     </insert>
 </mapper>

@@ -24,12 +24,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		var storeId=$("input[name='storeId']").val();  
     		var userId=$("input[name='userId']").val();  
     		var comment=$("textarea[name='comment']").val();
+    		var nickname=$("input[name='nickname']").val();
+    		var headurl=$("input[name='headurl']").val();
     		if(comment.length>0){
     			$("ul[class='comment']").append("<li style='padding-top:16px;'>"+
-    	                 "<div><img src='../image/zhuti.jpg' style='vertical-align:middle;width:40px;height:40px;border-radius:20px;margin-left:16px;'>"+
-    	                 "<span style='margin-left:16px;font-size:16px;'>"+comment+"</span>"+
+    	                 "<div><img src="+headurl+" style='vertical-align:middle;width:40px;height:40px;border-radius:20px;margin-left:16px;'>"+
+    	                 "<span style='margin-left:16px;font-size:16px;'>"+nickname+"</span>"+
     	                 "</div><div style='margin-left:16px;margin-right:16px;margin-top:10px;'>"+
-    	                 "<span style='font-size:14px;margin-left:16px;'>留言</span>"+
+    	                 "<span style='font-size:14px;margin-left:16px;'>"+comment+"</span>"+
     	                 "</div><div style='margin-left:16px;margin-right:16px;margin-top:10px;'>"+
     	                 "<span style='font-size:14px;margin-left:16px;color:#CDCDCD;'>3小时前</span>"+
     	                 "<a style='font-size:14px;margin-left:14px;color:#22B682;'>删除</a>"+
@@ -37,9 +39,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	                 "</li>"); 
    	    		$.ajax({
    					type:"get",
-   					url:"http://192.168.5.233:8080/Delicious/storeHandler/saveComment",
+   					url:"http://www.cnmjw.com.cn/Delicious/storeHandler/saveComment",
                        data:{"storeId":storeId,"userId":userId,"content":comment,"data":new Date()},
    					success:function(data){
+   						$("textarea[name='comment']").val("");
    					},
    					error:function(data){
    					}
@@ -54,6 +57,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   <input type="hidden" name="storeId" value="${storeId }">
   <input type="hidden" name="userId" value="${userId }">
+  <input type="hidden" name="nickname" value="${weixinUserInfo.nickname }">
+  <input type="hidden" name="headurl" value="${weixinUserInfo.headImgUrl }">
      <header class="bar bar-nav">
        <h1 class="title">${storeInfo.storename }</h1>
      </header>

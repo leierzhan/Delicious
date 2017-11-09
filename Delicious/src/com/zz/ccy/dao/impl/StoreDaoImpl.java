@@ -122,6 +122,6 @@ public class StoreDaoImpl implements StoreDao{
 	  map.put("storeId", storeId);
 	  map.put("userId", userId);
 	  map.put("content", content);
-      getSession().insert("com.zz.ccy.mapping.CommnetInfoMapper.saveComment",map);		
+      getSession().insert("com.zz.ccy.mapping.CommentInfoMapper.saveComment",map);		
 	}
 }
