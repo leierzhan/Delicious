@@ -131,7 +131,7 @@ public class MerchantListHandler{
 	   //进入店铺列表
 	   @RequestMapping("goMerchantSystest")
 	   private ModelAndView goMerchantSystest(HttpServletRequest request){
-		   String openid="ofcpN0rvlmJECR92K0PwT5AIaiUA";
+		   String openid="ofcpN0lFLo5P5djxVugirDSztAUY";
 		   System.out.println("openid:"+openid);
 		   WeixinUserInfo user=mer.getUserByOpenid(openid);
 		   

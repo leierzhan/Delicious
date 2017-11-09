@@ -238,6 +238,7 @@ public class StoreHandler {
     public String writeComment(@RequestParam("storeId") Integer storeId,@RequestParam("userId") Integer userId,
     		Map<String,Object> map){
     	map.put("storeId",storeId);
+    	map.put("userId",userId);
     	StoreInfo storeInfo=storeService.getStoreInfoById(storeId);
     	map.put("storeInfo",storeInfo);
     	WeixinUserInfo weixinUserInfo=userService.getUserInfoById(userId);
@@ -254,6 +255,7 @@ public class StoreHandler {
     @RequestMapping("/saveComment")
     public void saveComment(@RequestParam("storeId") Integer storeId,@RequestParam("userId") Integer userId,
     		@RequestParam("content") String content){
+    	System.out.println("hahahaha"+content);
     	storeService.saveComment(storeId,userId,content);
     }
 }
