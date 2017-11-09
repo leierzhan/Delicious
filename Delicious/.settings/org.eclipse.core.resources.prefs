@@ -1,0 +1,17 @@
+eclipse.preferences.version=1
+encoding//WebRoot/WEB-INF/htmls/test.html=gbk
+encoding//WebRoot/WEB-INF/pages/merchant/shz.jsp=UTF-8
+encoding//WebRoot/WEB-INF/pages/user/msb.jsp=UTF-8
+encoding//WebRoot/js=UTF-8
+encoding//WebRoot/js/Eleditor.min.js=UTF-8
+encoding//WebRoot/js/layout/base.css=UTF-8
+encoding//WebRoot/js/sm.js=UTF-8
+encoding//src/com/zz/ccy/handler/UserPageHandler.java=UTF-8
+encoding//src/com/zz/ccy/menu/MenuManager.java=UTF-8
+encoding//src/com/zz/ccy/service/MsbService.java=UTF-8
+encoding//src/com/zz/ccy/service/UserService.java=UTF-8
+encoding//src/com/zz/ccy/util/AdvancedUtil.java=UTF-8
+encoding//src/com/zz/ccy/util/ConnectionDB.java=UTF-8
+encoding//src/com/zz/ccy/util/MyX509TrustManager.java=UTF-8
+encoding/WebRoot=UTF-8
+

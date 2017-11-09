@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+例如namespace="me.gacl.mapping.userMapper"就是me.gacl.mapping(包名)+userMapper(userMapper.xml文件去除后缀)
+ -->
+<mapper namespace="com.zz.ccy.mapping.WeixinStoreMapper">
+    <!-- 在select标签中编写查询的SQL语句， 设置select标签的id属性为getUser，id属性值必须是唯一的，不能够重复
+    使用parameterType属性指明查询时使用的参数类型，resultType属性指明查询返回的结果集类型
+    resultType="me.gacl.domain.User"就表示将查询结果封装成一个User类的对象返回
+    User类就是users表所对应的实体类
+    -->
+    <!-- *********************************************店铺信息收藏和历史公用一个xml
+           
+     -->
+	<resultMap type="com.zz.ccy.entity.CollectInfo" id="collectinfo">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="storename" jdbcType="VARCHAR" property="storename" />
+		<result column="tags" jdbcType="VARCHAR" property="tags" />
+		<result column="headimg" jdbcType="VARCHAR" property="headimg" />
+		<result column="address" jdbcType="VARCHAR" property="address" />
+		<result column="latitude" jdbcType="VARCHAR" property="latitude" />
+		<result column="longitude" jdbcType="VARCHAR" property="longitude" />
+		<result column="tel" jdbcType="VARCHAR" property="tel" />
+		<result column="cheftel" jdbcType="VARCHAR" property="cheftel" />
+		<result column="imgsurl" jdbcType="VARCHAR" property="imgsurl" />
+		<result column="userid" jdbcType="INTEGER" property="userid" />
+		<result column="storeid" jdbcType="INTEGER" property="storeid" />
+		<result column="chefid" jdbcType="INTEGER" property="chefid" />
+		<result column="cheflevel" jdbcType="INTEGER" property="cheflevel" />
+		<result column="level" jdbcType="INTEGER" property="level" />
+		<result column="per_capite" jdbcType="INTEGER" property="per_capite" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="timec" jdbcType="VARCHAR" property="timec" />
+	</resultMap>
+
+     
+      <!-- 用户足迹列表 -->
+      <select id="getHistorylist" parameterType="integer" resultMap="collectinfo">
+     
+      select * from v_user_history where userid=#{userid} and status=0 order by timec desc
+       
+     </select>
+                <!-- 清除足迹列表 -->
+     <update id="updateHistory" parameterType="integer">
+     
+      update d_wx_history set status=1 where userid=#{userid} 
+       
+     </update>
+     
+     
+     
+     
+     
+             <!-- 用户收藏列表 -->
+     <select id="getCollectlist" parameterType="integer" resultMap="collectinfo">
+     
+      select * from v_user_collect where userid=#{userid} and status=0 order by timec desc
+       
+     </select>
+     
+     <!-- 跟新收藏状态 -->
+     
+     <update id="update_store_collect" parameterType="map" > 
+     update d_wx_collect set status=#{status} where userid=#{userid} and storeid=#{storeid}
+     </update>
+      <update id="update_chef_collect" parameterType="map" > 
+     update d_wx_collect set status=#{status} where userid=#{userid} and chefid=#{chefid}
+     </update>
+     
+     <resultMap type="com.zz.ccy.entity.StoreInfo" id="storeinfo">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="cityid" jdbcType="INTEGER" property="cityid" />
+		<result column="storename" jdbcType="VARCHAR" property="storename" />
+		<result column="address" jdbcType="VARCHAR" property="address" />
+		<result column="latitude" jdbcType="VARCHAR" property="latitude" />
+		<result column="longitude" jdbcType="VARCHAR" property="longitude" />
+		<result column="lunboimg" jdbcType="VARCHAR" property="lunboimg" />
+		<result column="tel" jdbcType="VARCHAR" property="tel" />
+		<result column="imgsurl" jdbcType="VARCHAR" property="imgsurl" />
+		<result column="level" jdbcType="INTEGER" property="level" />
+		<result column="per_capite" jdbcType="INTEGER" property="per_capite" />
+		<result column="calture" jdbcType="VARCHAR" property="calture"/>
+		<result column="busiiness_licens" jdbcType="VARCHAR" property="busiiness_licens"/>
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="userid" jdbcType="INTEGER" property="userid" />
+		<result column="timec" jdbcType="VARCHAR" property="timec" />
+	</resultMap>
+     
+
+     <select id="getStoreinfo" parameterType="integer" resultMap="storeinfo">
+     
+     select * from d_wx_store where id=#{id}
+     
+     </select>
+     
+
+     <select id="getMerStoreinfo" parameterType="integer" resultMap="storeinfo">
+     
+     select * from v_mer_Store where userid=#{userid}
+     
+     </select>
+     
+     
+     </mapper>
