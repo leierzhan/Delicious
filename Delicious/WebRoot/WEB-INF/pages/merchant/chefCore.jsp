@@ -201,7 +201,7 @@ $(".go").click(function(){
    </div>
 </c:if>
 </div>
-<h2 style="text-align:left;border-bottom:1px solid gray;">功能</h2>
+<h2 style="text-align:left;border-bottom:1px solid gray;">&nbsp;&nbsp;功能</h2>
         <div style="width:100%;height:auto;text-align:center;">
         
           <div class="row" style="width:80%;margin:0 auto;" >
@@ -213,11 +213,11 @@ $(".go").click(function(){
           <img alt="" src="../imgsvg/cai.svg" style="width:40px;"/><br>
         菜品信息</div>
         </div>
-          <div class="row" style="width:80%;margin:0 auto;" >
+    <!--       <div class="row" style="width:80%;margin:0 auto;" >
         <div class="col-50 go" title="../merchant/goPage?url=wzlist" style="margin-top:15px;height:85px;background-color:#666666;color:#eee;padding:8px;border-radius:10px;">
      <img alt="" src="../imgsvg/wenzhang.svg" style="width:40px;"/><br>     
         从业经历</div>
-        </div>
+        </div> -->
 
 </div>
 

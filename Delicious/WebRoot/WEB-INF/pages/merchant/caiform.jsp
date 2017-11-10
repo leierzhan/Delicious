@@ -130,7 +130,7 @@ $(".tj").click(function(){
 <body style="background-color: #eee;">
 
 <header class="bar bar-nav">
-  <h1 class="title">菜信息${storeid }</h1>
+  <h1 class="title">菜信息</h1>
 </header>
 <div class="content" style="margin-top:-35px;">
     <div class="list-block">
