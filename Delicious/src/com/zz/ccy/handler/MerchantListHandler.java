@@ -503,7 +503,6 @@ public class MerchantListHandler{
 	        //服务器上传	 
 	        return ss;  
 	    }
-		
 		@ResponseBody
 		@RequestMapping("addStoreupdate")
 		public Integer addStoreupdate(HttpServletRequest request,@RequestParam("imgs") String imgs,@RequestParam("name") String name,@RequestParam("renjun") String renjun,@RequestParam("focus") String focus,
@@ -520,11 +519,9 @@ public class MerchantListHandler{
 			for (int i = 0; i < ss.length; i++) {
 				lunbo+=ss[i];
 			}
-			
 			System.out.println(ss[0]);
 			System.out.println(lunbo.substring(0, lunbo.length()-1));
 			StoreInfoupdate s=new StoreInfoupdate(0, 0, name,ss[0].toString(), 4, Integer.parseInt(renjun.toString()), address,lunbo.substring(0, lunbo.length()-1), storerule, ff[0], ff[1], tel, pp,yimg, 0, userid, getNowDateTime());
-			
 			int i=mer.addStoreupdate(s);
 			return i;
 		}
