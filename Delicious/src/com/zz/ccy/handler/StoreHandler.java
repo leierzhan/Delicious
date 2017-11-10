@@ -160,6 +160,7 @@ public class StoreHandler {
     	List<Greens> greensList=storeService.getGreensByStoreId(storeId);
     	map.put("greenList",greensList);
     	List<CommentEntity> commentList=storeService.getCommentFour(storeId);
+    	System.out.println(commentList);
     	map.put("commentList",commentList);
     	return "store_detail";
     }
@@ -203,6 +204,12 @@ public class StoreHandler {
     public void addCommentZan(@RequestParam("commentId") Integer commentId){
     	storeService.addCommentZan(commentId);
     }
+    /**
+     * 获取更多评论
+     * @param storeId
+     * @param map
+     * @return
+     */
     @RequestMapping("/moreComment")
     public String moreComment(@RequestParam("storeId") int storeId,Map<String,Object> map){
     	List<CommentEntity> commentList=storeService.getMoreCommentByStoreId(storeId);
