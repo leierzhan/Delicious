@@ -174,7 +174,7 @@ $(document).ready(function(){
 
         
 
-        <div class="col-33 go" title="../merchant/goPage?url=cailist" style="margin-top:15px;height:85px;background-color:#3570dd;color:#eee;padding:8px;border-radius:10px;">
+        <div class="col-33 go" title="../merchant/goPage?url=qianlist" style="margin-top:15px;height:85px;background-color:#3570dd;color:#eee;padding:8px;border-radius:10px;">
           <img alt="" src="../imgsvg/record.svg" style="width:40px;"/><br>
           
         收款记录</div>
