@@ -481,24 +481,16 @@ public class MerchantListHandler{
 	             if(!targetFile.exists()){  
 	                 targetFile.mkdirs();  
 	             }  
-	       
 	             //保存  
 	             try {  
 	                 files[i].transferTo(targetFile);  
 	             } catch (Exception e) {  
 	                 e.printStackTrace();  
 	             } 
-	             
 //	             System.out.println("拷贝文件："+path1+"/"+filename+"拷到："+path+filename);
-	        	
 //	             uts.copyFile(path1+"/"+filename, path+filename);     
-	             
 //	             System.out.println("gid:"+gid+"--goods/imgs/"+filename+"--type"+type+"status:0");
-	             
-	           
 			}
-	        
-	        
 	        ss=ss.substring(0, ss.length()-1);
 	        //服务器上传	 
 	        return ss;  
@@ -507,13 +499,9 @@ public class MerchantListHandler{
 		@RequestMapping("addStoreupdate")
 		public Integer addStoreupdate(HttpServletRequest request,@RequestParam("imgs") String imgs,@RequestParam("name") String name,@RequestParam("renjun") String renjun,@RequestParam("focus") String focus,
 				@RequestParam("address") String address,@RequestParam("storerule") int storerule,@RequestParam("tel") String tel,@RequestParam("yimg") String yimg,@RequestParam("pp") String pp){
-			
 			int userid= (Integer) request.getSession().getAttribute("userid");
-			
 			String[] ff=focus.split(",");
-			
 			imgs=imgs.substring(0, imgs.length()-1);
-			
 			String[] ss=imgs.split(",");
 			String lunbo="";
 			for (int i = 0; i < ss.length; i++) {
