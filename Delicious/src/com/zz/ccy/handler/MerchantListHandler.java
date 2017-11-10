@@ -491,7 +491,7 @@ public class MerchantListHandler{
 	             
 //	             System.out.println("¿½±´ÎÄ¼þ£º"+path1+"/"+filename+"¿½µ½£º"+path+filename);
 	        	
-//	             uts.copyFile(path1+"/"+filename, path+filename);
+//	             uts.copyFile(path1+"/"+filename, path+filename);     
 	             
 //	             System.out.println("gid:"+gid+"--goods/imgs/"+filename+"--type"+type+"status:0");
 	             
