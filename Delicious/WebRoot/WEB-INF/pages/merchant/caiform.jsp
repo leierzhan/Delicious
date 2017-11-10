@@ -196,11 +196,11 @@ $(".tj").click(function(){
               <div class="item-input">
                 <select name="chefid">
                  <option value="0">无特定厨师</option>
-                <c:forEach items="${chefs}" var="c">
-                
-                <option value="${c.id }">${c.name}</option>
-            </c:forEach>
+                  <c:forEach items="${chefs}" var="c">
+                <option value="${c.id}">${c.name}</option>
+                </c:forEach>
                 </select>
+               
                 
               </div>
             </div>

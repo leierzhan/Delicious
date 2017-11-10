@@ -140,6 +140,11 @@ $(".tj").click(function(){
 	
 });
 
+$(".go").click(function(){
+	var url=$(this).attr("title");
+	window.location.href=url;
+});
+
 });
 </script>
 
@@ -200,7 +205,7 @@ $(".tj").click(function(){
         <div style="width:100%;height:auto;text-align:center;">
         
           <div class="row" style="width:80%;margin:0 auto;" >
-        <div class="col-50 go" title="../merchant/goChefList" style="margin-top:15px;height:85px;background-color:#808ddd;color:#eee;padding:8px;border-radius:10px;">
+        <div class="col-50 go" title="../merchant/goUpdateChef?id=${chef.id}" style="margin-top:15px;height:85px;background-color:#808ddd;color:#eee;padding:8px;border-radius:10px;">
      <img alt="" src="../imgsvg/chushi.svg" style="width:40px;"/><br>     
         厨师信息
           </div>

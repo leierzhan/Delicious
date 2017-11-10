@@ -68,7 +68,7 @@ color:#eee;
   <button class="button pull-left go" title="../merchant/goMerchantSys">
       首页
     </button>
-    <button class="button pull-right go" title="../merchant/goAddGreens">
+    <button class="button pull-right go" title="../merchant/goAddGreensByStore">
       +
     </button>
     <h1 class="title">菜单</h1>

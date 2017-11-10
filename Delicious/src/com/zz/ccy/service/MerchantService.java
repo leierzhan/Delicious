@@ -142,6 +142,8 @@ public interface MerchantService {
 	 */
 	public int ischef(int userid);
 	
+	public ChefEntity getChefByUserid(int userid);
+	
 	public String sendCode(String mobilenum) throws ClientProtocolException, IOException;
 	//出是绑定的用户id查询厨师所在店铺信息
 	public StoreInfo getStoreinfoByuserid(int userid) ;

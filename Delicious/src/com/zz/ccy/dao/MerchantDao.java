@@ -282,8 +282,10 @@ public interface MerchantDao {
 	
 	int isMerchantUser(int userid);
 	
-	int ischef(int userid);
+	int isChef(int userid);
 	
+	
+	ChefEntity getChefByUserid(int userid);
 	//根据用户id查询所属店铺信息
 	StoreInfo getStoreinfoByuserid(int userid) ;
 	

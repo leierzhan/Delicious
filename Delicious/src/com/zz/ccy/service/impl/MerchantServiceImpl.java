@@ -135,7 +135,7 @@ public class MerchantServiceImpl implements MerchantService{
 	}
 	@Override
 	public int ischef(int userid) {
-		return  mer.ischef(userid);
+		return  mer.isChef(userid);
 	}
 	
 	@Override
@@ -164,6 +164,11 @@ public class MerchantServiceImpl implements MerchantService{
 	public StoreInfo getStoreinfoByuserid(int userid) {
 		// TODO Auto-generated method stub
 		return mer.getStoreinfoByuserid(userid);
+	}
+	@Override
+	public ChefEntity getChefByUserid(int userid) {
+		// TODO Auto-generated method stub
+		return mer.getChefByUserid(userid);
 	}
 
 

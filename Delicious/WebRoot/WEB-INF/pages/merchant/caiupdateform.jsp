@@ -193,6 +193,7 @@ $(".tj").click(function(){
               <div class="item-title label">来自厨师</div>
               <div class="item-input">
                 <select name="chefid">
+                 <option value="0">无特定厨师</option>
                 <c:forEach items="${chefs}" var="c">
                 
                 <c:if test="${c.id eq greens.chefid}">

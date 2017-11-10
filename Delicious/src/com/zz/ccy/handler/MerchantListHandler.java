@@ -328,6 +328,8 @@ public class MerchantListHandler{
 		 
 		 int status=mer.ischef(userid);
 		 
+		 
+		 
 		 //判断status如果等于-1表示新用户进入如果等于0审核中如果等于1审核通过
 
 		 if(status==-1){
@@ -339,6 +341,9 @@ public class MerchantListHandler{
 			StoreInfo store= mer.getStoreinfoByuserid(userid);
 			
 			WeixinUserInfo user=us.getUserInfoById(userid);
+			
+			ChefEntity chef=mer.getChefByUserid(userid);
+			mp.put("chef", chef);
 			 mp.put("userinfo", user);
 			 mp.put("storeinfo", store);
 			 m=new ModelAndView("merchant/chefCore",mp);
@@ -369,6 +374,11 @@ public class MerchantListHandler{
 			 }else if(status==0){
 				m=new ModelAndView("merchant/shz");
 			 }else{
+					StoreInfo store= mer.getStoreinfoByuserid(userid);
+					
+					WeixinUserInfo user=us.getUserInfoById(userid);
+					 mp.put("userinfo", user);
+					 mp.put("storeinfo", store);
 				 m=new ModelAndView("merchant/chefCore",mp);
 			 }
 			   return m;
@@ -388,7 +398,7 @@ public class MerchantListHandler{
 	   @RequestMapping("addChef")
 	   private Integer addChef(String imgs,String name,String tel,String tags,HttpServletRequest request){
 		   int userid=(Integer) request.getSession().getAttribute("userid"); 
-			   ChefEntity c=new ChefEntity(0, userid, tel, name, "http://www.cnmjw.com.cn/Delicious/merchant_img/"+imgs, 3, tags,0, 0, getNowDateTime());
+			   ChefEntity c=new ChefEntity(0, userid, tel, name, "http://www.cnmjw.com.cn/Delicious/merchant_img/"+imgs, 3, tags,0, 0, getNowDateTime(),"","");
 			   int i=0;
 			  i= mer.addChef(c);
 			  if(i>0){
@@ -399,8 +409,8 @@ public class MerchantListHandler{
 	   @ResponseBody
 	   @RequestMapping("updateChef")
 	   private Integer updateChef(int id,String imgs,String name,String tel,String tags,HttpServletRequest request){
-		   int storeid=(Integer) request.getSession().getAttribute("storeid"); 
-			   ChefEntity c=new ChefEntity(id, storeid, tel, name, "http://www.cnmjw.com.cn/Delicious/merchant_img/"+imgs, 3, tags,0, 0, getNowDateTime());
+		   int userid=(Integer) request.getSession().getAttribute("userid"); 
+			   ChefEntity c=new ChefEntity(id, userid, tel, name, "http://www.cnmjw.com.cn/Delicious/merchant_img/"+imgs, 3, tags,0, 0, getNowDateTime(),"","");
 			   int i=0;
 			  i= mer.updateChefinfo(c);
 		   return i;
@@ -553,8 +563,8 @@ public class MerchantListHandler{
 		   * @throws
 		    */
 		   //简单页面跳转
-		   @RequestMapping("goAddGreens")
-		   private ModelAndView goAddGreens(HttpServletRequest request){
+		   @RequestMapping("goAddGreensByStore")
+		   private ModelAndView goAddGreensByStore(HttpServletRequest request){
 			   int storeid=(Integer) request.getSession().getAttribute("storeid"); 
 			   List<ChefEntity> chefs= mer.getChefList(storeid);
 			   ModelAndView m=new ModelAndView("merchant/caiform","chefs",chefs);

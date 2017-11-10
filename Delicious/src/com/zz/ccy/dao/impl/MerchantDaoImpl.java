@@ -173,7 +173,7 @@ public class MerchantDaoImpl implements MerchantDao{
 	}
 
 	@Override
-	public int ischef(int userid) {
+	public int isChef(int userid) {
 		//com.zz.ccy.mapping.ChefInfoMapper
 		System.out.println("************userid="+userid+"**********");
 		Integer number= this.getSession().selectOne("com.zz.ccy.mapping.ChefInfoMapper.ischef", userid);  
@@ -185,6 +185,11 @@ public class MerchantDaoImpl implements MerchantDao{
 	public StoreInfo getStoreinfoByuserid(int userid) {
 		
 		return this.getSession().selectOne("com.zz.ccy.mapping.StoreInfoMapper.getStoreByUserid",userid);
+	}
+
+	@Override
+	public ChefEntity getChefByUserid(int userid) {
+		return this.getSession().selectOne("com.zz.ccy.mapping.ChefInfoMapper.getChefByUserId",userid);
 	}
 	   
 }

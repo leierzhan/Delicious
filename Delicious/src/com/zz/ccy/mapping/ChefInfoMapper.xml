@@ -16,17 +16,31 @@
        <result column="tags" jdbcType="VARCHAR" property="tags"/>
        <result column="status" jdbcType="INTEGER" property="status"/>
        <result column="timec" jdbcType="VARCHAR" property="timec"/>
+        <result column="starttime" jdbcType="VARCHAR" property="starttime"/>
+         <result column="endtimec" jdbcType="VARCHAR" property="endtime"/>
      </resultMap>
+     
+     
+     
     
     <!-- 根据店铺id获取对应店铺轮播图片 -  lifei添加返回cid-->
+        
     <select id="getChefByStoreId" parameterType="int" resultMap="ChefInfoResult">
-        select c.id,c.name,c.headimg,c.level,c.tags from d_wx_chef c where c.userid= #{userid}
+      SELECT c.id,c.userid,c.tel,c.name,c.headimg,c.level,c.tags,c.collectnum,sc.starttime,sc.endtime from d_wx_chef c inner join
+       storeandchef sc on sc.chefid=c.id where sc.storeid=#{storeid} and sc.status=0
+    </select>
+    
+    
+    
+    
+    <select id="getChefByUserId" parameterType="int" resultMap="ChefInfoResult">
+        select id,name,headimg,level,tags,collectnum,status from d_wx_chef c where c.userid= #{userid}
     </select>
     
     <!-- 根据店铺id此店铺所有厨师id-->
-    <select id="getChefIdsByStoreId" parameterType="int" resultType="int">
+     <select id="getChefIdsByStoreId" parameterType="int" resultType="int">
         select chefid from storeandchef c where c.storeid= #{storeId}
-    </select>
+    </select> 
     <!-- 根据厨师id获取厨师信息 -->
     <select id="getChefInfoById" parameterType="int" resultType="com.zz.ccy.entity.ChefEntity">
        select * from d_wx_chef c where c.id=#{chefId} 

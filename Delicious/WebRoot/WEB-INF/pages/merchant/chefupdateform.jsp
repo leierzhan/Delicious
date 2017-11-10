@@ -88,7 +88,7 @@ $(".ssc").click(function(){
 
 
 
-//店铺添加提交
+//厨师添加提交
 $(".tj").click(function(){
 	var id=$("input[name='id']").val();
 	var imgs=$(".simg").val();
@@ -110,7 +110,7 @@ $(".tj").click(function(){
 		},
 		success:function(data){
 			if(data>0){
-			window.location.href="../merchant/goChefList";
+			window.location.href="../merchant/goAddChef";
 			}else{
 			window.history.go(-1);
 			}
@@ -193,8 +193,6 @@ $(".tj").click(function(){
             </div>
           </div>
         </li>
-
-         
       </ul>
     </div>
     <div class="content-block">
