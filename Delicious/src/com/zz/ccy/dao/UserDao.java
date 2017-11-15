@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Component;
 
 import com.zz.ccy.entity.CollectInfo;
+import com.zz.ccy.entity.Msb;
 import com.zz.ccy.entity.TbUserOpenId;
 import com.zz.ccy.entity.UserCorepage;
 import com.zz.ccy.entity.UserHeadinfo;
@@ -225,4 +226,6 @@ public interface UserDao {
 	public void initUserStatus(int userid,String ercode);
     //根据用户id获取用户信息
 	public WeixinUserInfo getUserInfoById(Integer userId);
+	
+	public List<Msb> getUserMsbList(Msb msb);
 }

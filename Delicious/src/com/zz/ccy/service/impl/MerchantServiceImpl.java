@@ -170,6 +170,10 @@ public class MerchantServiceImpl implements MerchantService{
 		// TODO Auto-generated method stub
 		return mer.getChefByUserid(userid);
 	}
+	@Override
+	public List<Greens> getGreensListBuChefid(int chefid) {
+		return mer.getGreensListByChefid(chefid);
+	}
 
 
 }

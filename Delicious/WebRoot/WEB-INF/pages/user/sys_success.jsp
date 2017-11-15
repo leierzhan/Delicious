@@ -26,11 +26,28 @@
 
 <style>
 * {
+color:#8d8d8d;
 	margin: 0;
 	padding: 0;
 }
-
-
+.userinfo{
+height:68px;
+background-color: white;
+}
+.userinfo img{
+margin:14px;	
+float:left;
+width:40px;
+height:40px;
+}
+.user_info{
+float:left;
+line-height: 68px;
+}
+.msblist{
+margin-top:8px;
+}
+h2{color:orange;}
 </style>
 
 
@@ -52,11 +69,47 @@
   </header>
 
 	<div class="content">
-用户id：${code}
-
-        </div>
-
+	<div class="userinfo" >
+	<img alt="" src="${userinfo.headImgUrl}">
+	<div class="user_info">${userinfo.nickname }
+	<c:if test="${userinfo.truename!=null}">(${userinfo.truename })</c:if>
 </div>
+	
+	</div>
+	
+	
+		 <div class="list-block media-list msblist">
+      <ul>
+      
+      <c:forEach items="${msbs}" var="m">
+        <li style="border-radius:20px;">
+          <label class="label-checkbox item-content" style="border-left:18px solid orange;">
+            <input type="checkbox" name="checkbox">
+            <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+            <div class="item-inner">
+              <div class="item-title-row">
+                <div class="item-title"><h2>${m.num }</h2></div>
+                <div class="item-after"><h6>${m.endtime}</h6></div>
+              </div>
+              <div class="item-subtitle" >
+              <h4>
+             <c:if test="${m.storeid==0 }">
+             通用美食币
+             </c:if>
+                   <c:if test="${m.storeid>0 }">
+             制定商家美食币
+             </c:if>
+             </h4>
+              </div>
+              <div class="item-text" style="color:#8d8d8d;"><code>可用</code></div>
+            </div>
+          </label>
+        </li>
+        </c:forEach>
+        </ul>
+        </div>
+<button class="button button-fill" style="width:100%;position:fixed;bottom:0px;height:45px;line-height: 45px;">结账</button>
+        </div>
 </div>
 
 </body>

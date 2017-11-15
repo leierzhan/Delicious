@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import com.zz.ccy.dao.UserDao;
 import com.zz.ccy.entity.CollectInfo;
+import com.zz.ccy.entity.Msb;
 import com.zz.ccy.entity.TbUserOpenId;
 import com.zz.ccy.entity.UserCorepage;
 import com.zz.ccy.entity.UserHeadinfo;
@@ -247,6 +248,13 @@ public class UserDaoImpl implements UserDao{
 	        	 m.put("code", ercode);
 	        	 getSession().insert("com.zz.ccy.mapping.WeixinUserInfoMapper.addUserCore",m);
 	        	 logger.info("≤Â»Î≥…π¶");
+	}
+	@Override
+	public List<Msb> getUserMsbList(Msb msb) {
+		Map<String,Object> map=new HashMap<String, Object>();
+		map.put("storeid", msb.getStoreid());
+		map.put("code", msb.getCode());
+		return getSession().selectList("com.zz.ccy.mapping.MsbMapper.getUserMsblist",map);
 	}
 
 

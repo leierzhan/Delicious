@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.zz.ccy.dao.UserDao;
 import com.zz.ccy.entity.CollectInfo;
+import com.zz.ccy.entity.Msb;
 import com.zz.ccy.entity.TbUserOpenId;
 import com.zz.ccy.entity.UserCorepage;
 import com.zz.ccy.entity.UserHeadinfo;
@@ -195,6 +196,10 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public WeixinUserInfo getUserInfoById(Integer userId) {
 		return userDao.getUserInfoById(userId);
+	}
+	@Override
+	public List<Msb> getUserMsbList(Msb msb) {
+		return userDao.getUserMsbList(msb);
 	}
 
   }

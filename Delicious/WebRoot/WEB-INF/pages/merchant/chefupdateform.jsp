@@ -197,8 +197,7 @@ $(".tj").click(function(){
     </div>
     <div class="content-block">
       <div class="row">
-         <div class="col-50"><a href="../merchant/delChef?id=${chef.id}" class="button button-big button-fill button">删除</a></div>
-        <div class="col-50"><a href="javascript:;" class="button button-big button-fill button-success tj">提交</a></div>
+        <div class="col-100"><a href="javascript:;" class="button button-big button-fill button-success tj">更新</a></div>
       </div>
     </div>
   </div>

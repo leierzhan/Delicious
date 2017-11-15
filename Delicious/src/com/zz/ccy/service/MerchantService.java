@@ -44,6 +44,8 @@ public interface MerchantService {
 	List<ChefEntity> getChefList(int storeid);
 	
 	List<Greens> getGreensList(int storeid);
+	List<Greens> getGreensListBuChefid(int chefid);
+	
 	List<Storerule> getRuleList();
 	WeixinUserInfo getUserByOpenid(String openid);
 	StoreInfoupdate getStoreupdate(int userid);

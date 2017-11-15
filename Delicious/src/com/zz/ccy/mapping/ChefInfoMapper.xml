@@ -27,7 +27,7 @@
         
     <select id="getChefByStoreId" parameterType="int" resultMap="ChefInfoResult">
       SELECT c.id,c.userid,c.tel,c.name,c.headimg,c.level,c.tags,c.collectnum,sc.starttime,sc.endtime from d_wx_chef c inner join
-       storeandchef sc on sc.chefid=c.id where sc.storeid=#{storeid} and sc.status=0
+       storeandchef sc on sc.chefid=c.id where sc.storeid=#{storeid} 
     </select>
     
     

@@ -25,7 +25,6 @@
         <property name="url" value="${jdbcUrl}" />
         <property name="username" value="${username}" />
         <property name="password" value="${password}" />
-        
         <!-- 初始化连接大小 
         <property name="initialSize" value="${initSize}" />-->
         <!-- 连接池最大数量 -->

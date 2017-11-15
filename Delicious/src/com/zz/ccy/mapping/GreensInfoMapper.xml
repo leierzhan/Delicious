@@ -16,6 +16,7 @@
 	       <result column="tags" jdbcType="VARCHAR" property="tags"/>
 	       <result column="zan" jdbcType="INTEGER" property="zan"/>
 	     </resultMap>
+	
 	    
 	    <!-- 根据店铺id获取对应特色菜 -->
 	    <select id="getGreensByStoreId" parameterType="int" resultMap="GreensInfoResult">

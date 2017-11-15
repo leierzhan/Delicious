@@ -190,7 +190,7 @@ $(".go").click(function(){
             <div class="item-inner"  style="color:#eee;">
               <div class="item-title-row">
                 <div class="item-title">${storeinfo.storename}</div>
-                <div class="item-after" >进入店铺</div>
+                <div class="item-after" >在职店铺</div>
               </div>
               <div class="item-subtitle">${storeinfo.address}</div>
               <div class="item-text" style="color:#eee;">${storeinfo.tel}</div>
@@ -209,7 +209,7 @@ $(".go").click(function(){
      <img alt="" src="../imgsvg/chushi.svg" style="width:40px;"/><br>     
         厨师信息
           </div>
-        <div class="col-50 go" title="../merchant/goGreens" style="margin-top:15px;	height:85px;background-color:#1288bb;color:#eee;padding:8px;border-radius:10px;">
+        <div class="col-50 go" title="../merchant/goGreensByChef" style="margin-top:15px;	height:85px;background-color:#1288bb;color:#eee;padding:8px;border-radius:10px;">
           <img alt="" src="../imgsvg/cai.svg" style="width:40px;"/><br>
         菜品信息</div>
         </div>

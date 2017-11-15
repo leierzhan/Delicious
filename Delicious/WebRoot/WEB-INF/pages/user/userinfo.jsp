@@ -98,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="item-inner">
               <div class="item-title label">生日</div>
               <div class="item-input">
-                <input type="date" name="birthday" placeholder="Birth day" value="2014-04-30">
+                <input type="date" name="brithday" placeholder="Birth day" value="${userinfo.brithday }">
               </div>
             </div>
           </div>

@@ -142,19 +142,7 @@ public class ArticleHandler {
 		//根据accessToken 和openId获取用户基本信息
 		if(accessToken.getAccessToken()!=null){
 			WeixinUserInfo userInfo=AdvancedUtil.getUserInfoByAccessToken(accessToken.getAccessToken(),accessToken.getOpenId());
-			//返回是否插入用户的id
-			int i=userService.saveOrUpdateEntity(userInfo);
-			if(i>0){
-				String ercode=userService.getErcode();
-				 userService.initUserStatus(i,ercode);
-				 String codepath =request.getSession().getServletContext().getRealPath("ercode");  
-				 AdvancedUtil au=new AdvancedUtil();
-		         try {
-					au.gennireQRCode(codepath+"/"+i+".jpg", "http://www.cnmjw.com.cn/Delicious/page/sys?code="+ercode);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+	
 			int userId=userService.getUserIdByOpenId(accessToken.getOpenId());
 			map.put("userId",userId);
 			map.put("nickname",userInfo.getNickname());

@@ -289,6 +289,8 @@ public interface MerchantDao {
 	//根据用户id查询所属店铺信息
 	StoreInfo getStoreinfoByuserid(int userid) ;
 	
+	List<Greens> getGreensListByChefid(int chefid);
+	
 	
 	
 }

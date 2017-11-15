@@ -117,14 +117,14 @@ $(document).ready(function(){
   <a href="javascript:;" class="button sys" style="height:65px;border:none;">
  <img alt="" src="../imgsvg/sys.svg" style="width:40px;"/><br>扫一扫
  </a>
-  <a href="../merchant/goPage?url=nonum" class="button" style="height:65px;border:none;"> 
+  <a href="http://127.0.0.1:8080/Delicious/merchant/goPage?url=nonum" class="button" style="height:65px;border:none;"> 
    <img alt="" src="../imgsvg/no.svg" style="width:40px;"/><br>输入号码</a>
   </p>
    <div class="list-block media-list" style="margin:0;" >
       <ul>
         <li>
           <a href="../storeHandler/storeDetailUI?storeId=${store.id}&userId=${userid}" class="item-link item-content" style="background-color:orange;">
-            <div class="item-media"><img src="${store.imgsurl}" width="80"></div>
+            <div class="item-media"><img src="${store.imgsurl}" width="80"height="80"></div>
             <div class="item-inner"  style="color:#eee;">
               <div class="item-title-row">
                 <div class="item-title">${store.storename}</div>
@@ -152,12 +152,8 @@ $(document).ready(function(){
       
   
         <div class="col-33 go" title="../merchant/goUpdateStoreinfo" style="margin-top:15px;margin-left:8px;height:85px;background-color:#ddb23b;color:#eee;padding:8px;border-radius:10px;">
-         <img alt="" src="../imgsvg/store.svg" style="width:40px;"/>
-       
-         
-         <br>
+         <img alt="" src="../imgsvg/store.svg" style="width:40px;"/><br>
         店铺信息
-       
          </div>
          
            
@@ -166,21 +162,23 @@ $(document).ready(function(){
           <img alt="" src="../imgsvg/cai.svg" style="width:40px;"/><br>
         菜品信息</div>
         
-                <div class="col-33 go" title="../merchant/goPage?url=wzlist" style="margin-top:15px;height:85px;background-color:#666666;color:#eee;padding:8px;border-radius:10px;">
+                <div class="col-33 go" title="../merchant/goChefList" style="margin-top:15px;height:85px;background-color:#66ddee;color:#eee;padding:8px;border-radius:10px;">
      <img alt="" src="../imgsvg/wenzhang.svg" style="width:40px;"/><br>     
-        店铺文章</div>
+        店铺厨师</div>
       </div>
       <div class="row"  style="width:80%;margin:0 auto;">
 
-        
+                    <div class="col-33 go" title="../merchant/goPage?url=wzlist" style="margin-top:15px;height:85px;background-color:#666666;color:#eee;padding:8px;border-radius:10px;">
+     <img alt="" src="../imgsvg/wenzhang.svg" style="width:40px;"/><br>     
+        店铺文章</div>
+    
 
         <div class="col-33 go" title="../merchant/goPage?url=qianlist" style="margin-top:15px;height:85px;background-color:#3570dd;color:#eee;padding:8px;border-radius:10px;">
           <img alt="" src="../imgsvg/record.svg" style="width:40px;"/><br>
           
         收款记录</div>
-   
+     </div>
 </div>
-  </div>
 
 </body>
 </html>

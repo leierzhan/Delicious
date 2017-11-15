@@ -104,7 +104,7 @@ $(".tj").click(function(){
 			name:name,
 			chefid:chefid,
 			tags:tags,
-			price:price
+			price:price,
 		},
 		success:function(data){
 			if(data>0){

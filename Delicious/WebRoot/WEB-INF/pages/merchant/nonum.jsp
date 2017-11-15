@@ -65,7 +65,7 @@ wx.config({
       <div class="searchbar" style="margin-top:40px;">
         <div class="search-input">
           <label class="icon icon-search" for="search"></label>
-          <input type="search" id='search' style="height:35px;" placeholder='输入用户编号'/>
+          <input type="search" id='search' style="height:35px;" value="${storeid}" placeholder='输入用户编号'/>
         </div>
       </div>
   

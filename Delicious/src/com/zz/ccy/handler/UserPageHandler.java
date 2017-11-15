@@ -1,5 +1,6 @@
 package com.zz.ccy.handler;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.zz.ccy.entity.CollectInfo;
+import com.zz.ccy.entity.Msb;
 import com.zz.ccy.entity.OauthAccessToken;
 import com.zz.ccy.entity.StoreMsb;
 import com.zz.ccy.entity.UserCorepage;
@@ -67,23 +69,27 @@ public class UserPageHandler{
 		String openid="-------------";
 		try{
 		Cookie co=	getCookieByName(request, "openid");
-		System.out.println("code"+co.equals(null));
 		if(!co.equals(null)){
 			openid= co.getValue();
 			r=new ModelAndView("go","page","../page/goUserCoreT");
 		}else{
-			
-		
 			AdvancedUtil au=new AdvancedUtil();
 			OauthAccessToken o = au.getOauthAccessToken(code);
 			openid =o.getOpenId();
-			//openid="o-3GTweC9cIRvDdcvFbmmw9hyWyc";
-			//
-			
+			if(o.getAccessToken()!=null){
+				WeixinUserInfo userInfo=AdvancedUtil.getUserInfoByAccessToken(o.getAccessToken(),openid);
+				//返回是否插入用户的id
+				int i=userService.saveOrUpdateEntity(userInfo);
+				if(i>0){
+					 String ercode=userService.getErcode();
+					 userService.initUserStatus(i,ercode);
+					 String codepath =request.getSession().getServletContext().getRealPath("ercode");  
+					 au.gennireQRCode(codepath+"/"+i+".jpg", "http://www.cnmjw.com.cn/Delicious/page/sys?code="+ercode);
+				}
+			}
 			Cookie c=new Cookie("openid", openid);
 			c.setMaxAge(10);
 			response.addCookie(c);
-
 			r=new ModelAndView("go","page","../page/goUserCoreT");
 		}
 
@@ -99,14 +105,12 @@ public class UserPageHandler{
 		response.addCookie(c);
 		
 		r=new ModelAndView("go","page","../page/goUserCoreT");
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
 	}finally{
 		request.getSession().setAttribute("openid", openid);
 	}
-		
-		
-		
-		
-	
 		return r;
 	}
 	
@@ -187,9 +191,17 @@ public class UserPageHandler{
 	   //用户扫码进去
 	   @RequestMapping("sys")
 	   public ModelAndView sys(String code ,HttpServletRequest request){
-		   
-		  Map<String, Object> map=new HashMap<String, Object>();
-		  map.put("code", code);
+		   int storeid=(Integer) request.getSession().getAttribute("storeid");
+		   Msb msb=new Msb();
+		   msb.setStoreid(storeid);
+		   msb.setCode(code);
+		   Map<String, Object> map=new HashMap<String, Object>();
+			 List<Msb>  msbs=userService.getUserMsbList(msb);
+			 if(msbs.size()>0){
+			WeixinUserInfo userinfo=userService.getUserInfo(msbs.get(0).getUserid());
+			map.put("userinfo",userinfo);
+			 }
+		  map.put("msbs", msbs);
 		  ModelAndView mv=new ModelAndView("user/sys_success",map);
 		  return mv;
 	   }
@@ -261,7 +273,6 @@ public class UserPageHandler{
 	   @RequestMapping("goMsb")
 	   public ModelAndView goMsb(int msb,HttpServletRequest request,HttpServletResponse response){
 			  int userid=(Integer) request.getSession().getAttribute("userid");
-			   System.out.println(userid);
 			 List<UserMsbRecord> consume=ms.getConsume(userid);
 			 List<UserMsbRecord> deal=ms.getDeal(userid);
 			 List<UserMsbRecord> task=ms.getTaskAward(userid);
@@ -452,7 +463,7 @@ public class UserPageHandler{
 	   @ResponseBody
 	   @RequestMapping("cancelCollect")
 	   public int cancelCollect(int storeid,int chefid,HttpServletRequest request,HttpServletResponse response){
-			  int userid=(Integer) request.getSession().getAttribute("userid");
+		int userid=(Integer) request.getSession().getAttribute("userid");
 		int i= userService.updateCollect(userid, storeid, chefid, 1);
 		return i;
 	   }

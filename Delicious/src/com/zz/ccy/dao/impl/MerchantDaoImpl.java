@@ -189,5 +189,10 @@ public class MerchantDaoImpl implements MerchantDao{
 	public ChefEntity getChefByUserid(int userid) {
 		return this.getSession().selectOne("com.zz.ccy.mapping.ChefInfoMapper.getChefByUserId",userid);
 	}
+
+	@Override
+	public List<Greens> getGreensListByChefid(int chefid) {
+		return this.getSession().selectList("com.zz.ccy.mapping.GreensInfoMapper.getGreensByChefId",chefid);
+	}
 	   
 }

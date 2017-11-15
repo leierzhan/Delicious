@@ -80,8 +80,13 @@ display:none;
 		<h1 class="title">我的文章</h1>
 	</header>
 	<div class="content" >
+				   <c:if test="${empty wzs}">
+		<p style="text-align:center;">空空如也...</p>
+		</c:if>
 		<div class="list-block" style="margin:0;">
+	
 			<ul>
+	
 				<c:forEach items="${wzs}" var="s">
 					 <li>
              <div class="card" style="margin:0;">

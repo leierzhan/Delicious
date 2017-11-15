@@ -64,11 +64,11 @@ color:#eee;
 <body style="background-color: #eee;">
  <header class="bar bar-nav">
   <button class="button pull-left go" title="../merchant/goMerchantSys">
-      首页
+      <
     </button>
-    <button class="button pull-right go" title="../merchant/goAddChef">
+<!--     <button class="button pull-right go" title="../merchant/goAddChef">
       +
-    </button>
+    </button> -->
     <h1 class="title">厨师</h1>
   </header>
 	<div class="content" style="margin-top:-40px;">
@@ -83,11 +83,11 @@ color:#eee;
 			<c:if test="${!empty chefs}">
 			
 			<c:forEach items="${chefs}" var="cf" >
-				<li><a href="../merchant/goUpdateChef?id=${cf.id}" class="item-link item-content">
+				<li><a href="../merchant/goGreensByChef?chefid=${cf.id}" class="item-link item-content">
 						<div class="item-media">
 							<img style="width:60px;height:60px;"
 								src="${cf.headimg}"
-								width="80">
+								>
 						</div>
 						<div class="item-inner">
 							<div class="item-title-row">

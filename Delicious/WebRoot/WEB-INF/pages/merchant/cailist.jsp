@@ -66,11 +66,9 @@ color:#eee;
 <body style="background-color: #eee;">
  <header class="bar bar-nav">
   <button class="button pull-left go" title="../merchant/goMerchantSys">
-      首页
+  <
     </button>
-    <button class="button pull-right go" title="../merchant/goAddGreensByStore">
-      +
-    </button>
+
     <h1 class="title">菜单</h1>
   </header>
 	<div class="content" style="margin-top:-40px;">
@@ -88,7 +86,7 @@ color:#eee;
 						<div class="item-media">
 							<img
 								src="${g.imgs}"
-								width="80">
+								width="60"height="60">
 						</div>
 						<div class="item-inner">
 							<div class="item-title-row">
