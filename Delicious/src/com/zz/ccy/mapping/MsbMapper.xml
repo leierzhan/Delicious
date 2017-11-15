@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+例如namespace="me.gacl.mapping.userMapper"就是me.gacl.mapping(包名)+userMapper(userMapper.xml文件去除后缀)
+ -->
+<mapper namespace="com.zz.ccy.mapping.MsbMapper">
+
+    <!-- *********************************************meishibi美食币操作
+           
+     -->
+	<resultMap type="com.zz.ccy.entity.Msb" id="msb">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="userid" jdbcType="INTEGER" property="userid" />
+		<result column="num" jdbcType="INTEGER" property="num" />
+		<result column="storeid" jdbcType="INTEGER" property="storeid" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="starttime" jdbcType="VARCHAR" property="starttime" />
+		<result column="endtime" jdbcType="VARCHAR" property="endtime" />
+		<result column="code" jdbcType="VARCHAR" property="code" />
+	</resultMap>
+
+     
+              <!-- 根据用户id和店铺id进行查询可使用的美食币个数 -->
+     <select id="getUserMsblist" parameterType="map" resultMap="msb">
+     
+     select  msb.id,msb.userid,msb.num,msb.storeid,msb.status,msb.starttime,msb.endtime from d_wx_msb msb inner join d_wx_userCoreStatus us on us.userid=msb.userid where
+ (msb.storeid=0 or msb.storeid=#{storeid}) and us.code=#{code}
+       
+     </select>
+
+     
+     
+     
+     
+     
+     </mapper>
