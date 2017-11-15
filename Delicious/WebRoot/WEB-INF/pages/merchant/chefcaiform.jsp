@@ -109,7 +109,7 @@ $(".tj").click(function(){
 		},
 		success:function(data){
 			if(data>0){
-			window.location.href="../merchant/goGreensByChef";
+			window.location.href="../merchant/goGreensByChef?chefid="+chefid;
 			}else{
 			window.history.go(-1);
 			}

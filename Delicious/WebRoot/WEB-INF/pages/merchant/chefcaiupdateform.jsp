@@ -88,17 +88,16 @@ $(".tj").click(function(){
 	var id=$("input[name='id']").val();
 	var name=$("input[name='name']").val();
 	var tags=$("input[name='tags']").val();
-	var chefid=$("select[name='chefid']").val();
+	//var chefid=$("select[name='chefid']").val();
 	var price=$("input[name='price']").val();
 	
 	$.ajax({
 		type:"POST",
-		url:"../merchant/updateGreens",
+		url:"../merchant/updateChefGreens",
 		data:{
 			id:id,
 			imgs:imgs,
 			name:name,
-			chefid:chefid,
 			tags:tags,
 			price:price
 		},
@@ -187,7 +186,7 @@ $(".tj").click(function(){
             </div>
           </div>
         </li>
-           <li class="align-top">
+          <%--  <li class="align-top">
           <div class="item-content">
             <div class="item-inner">
               <div class="item-title label">来自厨师</div>
@@ -207,7 +206,7 @@ $(".tj").click(function(){
               </div>
             </div>
           </div>
-        </li>
+        </li> --%>
 
       </ul>
     </div>

@@ -136,6 +136,7 @@ public class MerchantListHandler{
 	   @RequestMapping("goMerchantSystest")
 	   private ModelAndView goMerchantSystest(HttpServletRequest request){
 		   String openid="ofcpN0lFLo5P5djxVugirDSztAUY";
+		   request.getSession().setAttribute("openid",openid);
 		   System.out.println("openid:"+openid);
 		   WeixinUserInfo user=mer.getUserByOpenid(openid);
 		   
@@ -180,8 +181,8 @@ public class MerchantListHandler{
 	   @RequestMapping("goMerchantSys")
 	   private ModelAndView goMerchantSys(HttpServletRequest request){
 		   String openid=(String) request.getSession().getAttribute("openid");
-		   System.out.println("openid:"+openid);
-  WeixinUserInfo user=mer.getUserByOpenid(openid);
+		   System.out.println("openid-------------"+openid+"00000");
+		   WeixinUserInfo user=mer.getUserByOpenid(openid);
 		   
 		   request.getSession().setAttribute("userid",user.getId());
 		
@@ -315,7 +316,7 @@ public class MerchantListHandler{
 	   //根据店铺id查询厨师信息
 	   @RequestMapping("goAddCheftest")
 	   private ModelAndView goAddCheftest(HttpServletRequest request){
-		   String openid="ofcpN0rvlmJECR92K0PwT5AIaiUA";
+		   String openid="ofcpN0lFLo5P5djxVugirDSztAUY";
 			 
 		 Map<String,Object> mp=new HashMap<String, Object>();
 			 
@@ -540,9 +541,16 @@ public class MerchantListHandler{
 		   //简单页面跳转
 		   @RequestMapping("goGreensByChef")
 		   private ModelAndView goGreensByChef(HttpServletRequest request){
-		int chefid= (Integer) request.getSession().getAttribute("chefid");
+			   int chefid=(Integer) request.getSession().getAttribute("chefid");
 			 List<Greens> g=  mer.getGreensListBuChefid(chefid);
 			   ModelAndView m=new ModelAndView("merchant/cailistByChef","grs",g);
+			   return m;
+		   }
+		   //简单页面跳转
+		   @RequestMapping("goGreensByChefStore")
+		   private ModelAndView goGreensByChefStore(int chefid,HttpServletRequest request){
+			 List<Greens> g=  mer.getGreensListBuChefid(chefid);
+			   ModelAndView m=new ModelAndView("merchant/cailistByChefStore","grs",g);
 			   return m;
 		   }
 		   
@@ -559,9 +567,7 @@ public class MerchantListHandler{
 		   //简单页面跳转
 		   @RequestMapping("goAddGreensByStore")
 		   private ModelAndView goAddGreensByStore(HttpServletRequest request){
-			   int storeid=(Integer) request.getSession().getAttribute("storeid"); 
-			   List<ChefEntity> chefs= mer.getChefList(storeid);
-			   ModelAndView m=new ModelAndView("merchant/caiform","chefs",chefs);
+			   ModelAndView m=new ModelAndView("merchant/caiform");
 			   return m;
 		   }
 		   
@@ -583,11 +589,8 @@ public class MerchantListHandler{
 		   @RequestMapping("goUpdateGreens")
 		   private ModelAndView goUpdateGreens(int id,HttpServletRequest request){
 			   System.out.println("**********_________---"+id);
-			   int storeid=(Integer) request.getSession().getAttribute("storeid"); 
-			   List<ChefEntity> chefs= mer.getChefList(storeid);
 			   Greens g= mer.getGreensById(id);
 			   Map<String,Object> m=new HashMap<String, Object>();
-			   m.put("chefs",chefs);
 			   m.put("greens",g);
 			   ModelAndView mv=new ModelAndView("merchant/caiupdateform",m);
 			   return mv;
@@ -601,6 +604,7 @@ public class MerchantListHandler{
 			   List<ChefEntity> chefs= mer.getChefList(storeid);
 			   Greens g= mer.getGreensById(id);
 			   Map<String,Object> m=new HashMap<String, Object>();
+			   
 			   m.put("chefs",chefs);
 			   m.put("greens",g);
 			   ModelAndView mv=new ModelAndView("merchant/chefcaiupdateform",m);
@@ -620,6 +624,17 @@ public class MerchantListHandler{
 			   		}
 				   Greens g=new Greens(0, storeid, chefid, "http://www.cnmjw.com.cn/Delicious/merchant_img/"+imgs, name, price, tags, 0, status);
 				 int i= mer.addGreens(g);
+			   return i;
+		   }
+		   
+		   @ResponseBody
+		   @RequestMapping("updateChefGreens")
+		   private Integer updateChefGreens(int id,String imgs,String name,float price,String tags,HttpServletRequest request){
+			   int storeid=(Integer) request.getSession().getAttribute("storeid"); 
+			   int chefid=(Integer)request.getSession().getAttribute("chefid");
+			   System.out.println(storeid+"--------#############################-----------storeid");
+				   Greens g=new Greens(id, storeid,chefid , "http://www.cnmjw.com.cn/Delicious/merchant_img/"+imgs, name, price, tags, 0, 0);
+				 int i= mer.updateGreensById(g);
 			   return i;
 		   }
 		

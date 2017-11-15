@@ -95,7 +95,7 @@ $(".tj").click(function(){
 	var name=$("input[name='name']").val();
 	var tags=$("input[name='tags']").val();
 	var tel=$("input[name='tel']").val();
-	var yimg=$(".yimg").val();
+	//var yimg=$(".yimg").val();
 	
 	$.ajax({
 		type:"POST",
@@ -105,8 +105,8 @@ $(".tj").click(function(){
 			name:name,
 			id:id,
 			tags:tags,
-			tel:tel,
-			yimg:yimg
+			tel:tel
+			//yimg:yimg
 		},
 		success:function(data){
 			if(data>0){

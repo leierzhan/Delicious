@@ -83,7 +83,7 @@ color:#eee;
 			<c:if test="${!empty chefs}">
 			
 			<c:forEach items="${chefs}" var="cf" >
-				<li><a href="../merchant/goGreensByChef?chefid=${cf.id}" class="item-link item-content">
+				<li><a href="../merchant/goGreensByChefStore?chefid=${cf.id}" class="item-link item-content">
 						<div class="item-media">
 							<img style="width:60px;height:60px;"
 								src="${cf.headimg}"

@@ -93,7 +93,7 @@ $(".tj").click(function(){
 	var imgs=$(".simg").val();
 	var name=$("input[name='name']").val();
 	var tags=$("input[name='tags']").val();
-	var chefid=$("select[name='chefid']").val();
+	//var chefid=$("select[name='chefid']").val();
 	var price=$("input[name='price']").val();
 	
 	$.ajax({
@@ -102,7 +102,7 @@ $(".tj").click(function(){
 		data:{
 			imgs:imgs,
 			name:name,
-			chefid:chefid,
+			chefid:0,
 			tags:tags,
 			price:price,
 		},
@@ -189,7 +189,7 @@ $(".tj").click(function(){
             </div>
           </div>
         </li>
-           <li class="align-top">
+          <%--  <li class="align-top">
           <div class="item-content">
             <div class="item-inner">
               <div class="item-title label">来自厨师</div>
@@ -205,7 +205,7 @@ $(".tj").click(function(){
               </div>
             </div>
           </div>
-        </li>
+        </li> --%>
 
       </ul>
     </div>

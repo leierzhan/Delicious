@@ -88,7 +88,7 @@ $(".tj").click(function(){
 	var id=$("input[name='id']").val();
 	var name=$("input[name='name']").val();
 	var tags=$("input[name='tags']").val();
-	var chefid=$("select[name='chefid']").val();
+	//var chefid=$("select[name='chefid']").val();
 	var price=$("input[name='price']").val();
 	
 	$.ajax({
@@ -98,7 +98,7 @@ $(".tj").click(function(){
 			id:id,
 			imgs:imgs,
 			name:name,
-			chefid:chefid,
+			chefid:0,
 			tags:tags,
 			price:price
 		},
@@ -187,10 +187,10 @@ $(".tj").click(function(){
             </div>
           </div>
         </li>
-           <li class="align-top">
+          <%--  <li class="align-top">
           <div class="item-content">
             <div class="item-inner">
-              <div class="item-title label">来自厨师</div>
+              <div class="item-title label">来自厨师${greens.chefid }</div>
               <div class="item-input">
                 <select name="chefid">
                  <option value="0">无特定厨师</option>
@@ -200,14 +200,14 @@ $(".tj").click(function(){
                 <option selected="selected" value="${c.id }">${c.name}</option>
                 </c:if>
                 
-                <option value="${c.id }">${c.name}</option>
+                <option value="${c.id }">${c.name} </option>
             </c:forEach>
                 </select>
                 
               </div>
             </div>
           </div>
-        </li>
+        </li> --%>
 
       </ul>
     </div>
@@ -216,6 +216,7 @@ $(".tj").click(function(){
         <div class="col-50"><a href="../merchant/delGreens?id=${greens.id}" class="button button-big button-fill button-error">删除</a></div>
         <div class="col-50"><a href="javascript:;" class="button button-big button-fill button-success tj">修改提交</a></div>
       </div>
+      
     </div>
   </div>
   

@@ -68,6 +68,9 @@ color:#eee;
   <button class="button pull-left go" title="../merchant/goMerchantSys">
   <
     </button>
+       <button class="button pull-right go" title="../merchant/goAddGreensByStore">
+      +
+    </button>
 
     <h1 class="title">菜单</h1>
   </header>
@@ -82,7 +85,11 @@ color:#eee;
 			<c:if test="${!empty grs}">
 			
 			<c:forEach items="${grs}" var="g" >
-				<li><a href="../merchant/goUpdateGreens?id=${g.id}" class="item-link item-content">
+				<li>
+				<c:if test="${g.status==0}">
+				<a href="../merchant/goUpdateGreens?id=${g.id}" class="item-link item-content"></c:if>
+				<c:if test="${g.status==1}">
+				<a href="#" class="item-link item-content"></c:if>
 						<div class="item-media">
 							<img
 								src="${g.imgs}"
@@ -90,7 +97,9 @@ color:#eee;
 						</div>
 						<div class="item-inner">
 							<div class="item-title-row">
-								<div class="item-title" style="padding-left:4px;"><b>${g.name}</b></div>
+								<div class="item-title" style="padding-left:4px;"><b>${g.name}</b>
+								
+								<c:if test="${g.status==1}"><code style="background-color:#168;font-size:11px;">厨师专菜</code></c:if></div>
 								<div class="item-after">￥${g.price}</div>
 							</div>
 							<div class="item-subtitle"><code>${g.tags}</code></div>

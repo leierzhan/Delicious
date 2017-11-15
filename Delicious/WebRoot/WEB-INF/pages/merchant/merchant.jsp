@@ -141,39 +141,42 @@ $(document).ready(function(){
       <ul>
     <li class="item-content">
           <div class="item-inner">
-            <div class="item-title" style="color:#8d8d8d;">管理</div>
+            <div class="item-title" style="color:#8d8d8d;">管理功能</div>
           </div>
         </li>
         </ul>
         </div>
         <div style="width:100%;height:auto;text-align:center;">
         
-      <div class="row" style="width:80%;margin:0 auto;" >
+      <div class="row  no-gutter" style="margin:0 auto;" >
       
   
-        <div class="col-33 go" title="../merchant/goUpdateStoreinfo" style="margin-top:15px;margin-left:8px;height:85px;background-color:#ddb23b;color:#eee;padding:8px;border-radius:10px;">
+        <div class="col-40 go" title="../merchant/goUpdateStoreinfo" style="height:85px;background-color:#ddb23b;color:#eee;padding:8px;">
          <img alt="" src="../imgsvg/store.svg" style="width:40px;"/><br>
         店铺信息
          </div>
          
            
            
-        <div class="col-33 go" title="../merchant/goGreens" style="margin-top:15px;	height:85px;background-color:#1288bb;color:#eee;padding:8px;border-radius:10px;">
+        <div class="col-60 go" title="../merchant/goGreens" style="	height:85px;background-color:#1288bb;color:#eee;padding:8px;">
           <img alt="" src="../imgsvg/cai.svg" style="width:40px;"/><br>
         菜品信息</div>
         
-                <div class="col-33 go" title="../merchant/goChefList" style="margin-top:15px;height:85px;background-color:#66ddee;color:#eee;padding:8px;border-radius:10px;">
+                
+      </div>
+      <div class="row no-gutter"  style="margin:0 auto;">
+      <div class="col-100 go" title="../merchant/goChefList" style="height:85px;background-color:#66ddee;color:#eee;padding:8px;">
      <img alt="" src="../imgsvg/wenzhang.svg" style="width:40px;"/><br>     
         店铺厨师</div>
-      </div>
-      <div class="row"  style="width:80%;margin:0 auto;">
-
-                    <div class="col-33 go" title="../merchant/goPage?url=wzlist" style="margin-top:15px;height:85px;background-color:#666666;color:#eee;padding:8px;border-radius:10px;">
+        </div>
+        
+      <div class="row no-gutter"  style="margin:0 auto;">
+                    <div class="col-50 go" title="../merchant/goPage?url=wzlist" style="height:85px;background-color:#666666;color:#eee;padding:8px;">
      <img alt="" src="../imgsvg/wenzhang.svg" style="width:40px;"/><br>     
         店铺文章</div>
     
 
-        <div class="col-33 go" title="../merchant/goPage?url=qianlist" style="margin-top:15px;height:85px;background-color:#3570dd;color:#eee;padding:8px;border-radius:10px;">
+        <div class="col-50 go" title="../merchant/goPage?url=qianlist" style="height:85px;background-color:#3570dd;color:#eee;padding:8px;">
           <img alt="" src="../imgsvg/record.svg" style="width:40px;"/><br>
           
         收款记录</div>
