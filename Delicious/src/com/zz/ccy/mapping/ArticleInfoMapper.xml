@@ -5,6 +5,7 @@
  -->
 <mapper namespace="com.zz.ccy.mapping.ArticleInfoMapper">
 
+   <cache/><!-- 开启本mapper的namespace下的二级缓存 -->
      <resultMap type="com.zz.ccy.entity.ArticleInfo" id="ArticleInfoResult">
        <id column="id" jdbcType="INTEGER" property="id"/>
        <result column="openId" jdbcType="VARCHAR" property="openId"/>

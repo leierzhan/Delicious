@@ -4,8 +4,8 @@
 例如namespace="me.gacl.mapping.userMapper"就是me.gacl.mapping(包名)+userMapper(userMapper.xml文件去除后缀)
  -->
 <mapper namespace="com.zz.ccy.mapping.StoreInfoMapper">
-
-     <resultMap type="com.zz.ccy.entity.StoreInfo" id="StoreInfoResult">
+	   <cache/><!-- 开启本mapper的namespace下的二级缓存 -->
+       <resultMap type="com.zz.ccy.entity.StoreInfo" id="StoreInfoResult">
        <id column="id" jdbcType="INTEGER" property="id"/>
        <result column="storename" jdbcType="VARCHAR" property="storename"/>
        <result column="imgsurl" jdbcType="VARCHAR" property="imgsurl"/>

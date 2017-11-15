@@ -5,7 +5,7 @@
 例如namespace="me.gacl.mapping.userMapper"就是me.gacl.mapping(包名)+userMapper(userMapper.xml文件去除后缀)
  -->
 	<mapper namespace="com.zz.ccy.mapping.GreensInfoMapper">
-	
+	<cache/><!-- 开启本mapper的namespace下的二级缓存 -->
 	     <resultMap type="com.zz.ccy.lf.entity.Greens" id="GreensInfoResult">
 	       <id column="id" jdbcType="INTEGER" property="id"/>
 	       <result column="storeid" jdbcType="INTEGER" property="storeid"/>
