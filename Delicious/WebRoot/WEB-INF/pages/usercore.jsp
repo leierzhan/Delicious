@@ -59,31 +59,64 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   .show{
     display:none;
   }
+  .sys{
+  position: fixed;
+  right:10px;
+  color:white;
+  
+  }
   </style>
   
   <body>
   
   
-  <script>
-  $(document).ready(function(){
-	$(".ecode").click(function(){
+<script type="text/javascript">
+$(document).ready(function(){
+	wx.config({
+	    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+	    appId: 'wx5ecac8f9f5725183', // 必填，公众号的唯一标识
+	    timestamp: ${jsconfig.timestamp}, // 必填，生成签名的时间戳
+	    nonceStr: '${jsconfig.noncestr}', // 必填，生成签名的随机串
+	    signature: '${jsconfig.signature}',// 必填，签名，见附录1
+	    jsApiList: [${jsconfig.apis}] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+	});
+
+/* 	wx.ready(function () {
+		 
+		  document.querySelector('#checkJsApi').onclick = function () {
+			  alert(1);
+		    wx.checkJsApi({
+		      jsApiList: [
+		        ${jsconfig.apis}
+		      ],
+		      success: function (res) {
+		        alert(JSON.stringify(res));
+		      }
+		    });
+		  };
+	}); */
+	
+	
+	$(".sys").click(function(){
+		wx.scanQRCode({
+		    needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+		    scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+		    success: function (res) {
+		    var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+		    window.location.href=result;
+		}
+		});
 		
-		$(".show").show();
 	});
 	
-	$(".show").click(function(){
-	$(".show").hide(); 
-	});
-	  
-  });
-  
-  </script>
-<img alt="" src="../imgsvg/sanjiao.svg" class="show" style="width:30px;position:absolute; top:40px;right:30px;">
+});
+</script>
+<%-- <img alt="" src="../imgsvg/sanjiao.svg" class="show" style="width:30px;position:absolute; top:40px;right:30px;">
 <div class="show" style="width:100px;height:100px;border-radius:15px;position: absolute;right:20px;top:50px; background-color: white;">
 <img src="../ercode/${userid}.jpg"  class="shower show"  >
-</div>
+</div> --%>
   
-<a href="javascript:;" class="ecode">支付码</a>
+<a href="javascript:;" class="sys">扫一扫</a>
   	 <div class="headline-bg">
   	   <img  src="${ucp.headimg}"
   	    style='margin-top:15px;border:2px solid gray;width:70px;height:70px;border-radius:25px;'/>

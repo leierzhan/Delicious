@@ -17,6 +17,8 @@ public class StoreInfoupdate {
 	private String address;//地址
 	private String lunboimg;//轮播图
 	private int storerule;//消费规则id
+	private int di;
+	private int man;
 	private String latitude;
 	private String longitude;
 	private String tel;//电话
@@ -183,6 +185,30 @@ public class StoreInfoupdate {
 
 	public void setLunboimg(String lunboimg) {
 		this.lunboimg = lunboimg;
+	}
+
+
+
+	public int getDi() {
+		return di;
+	}
+
+
+
+	public void setDi(int di) {
+		this.di = di;
+	}
+
+
+
+	public int getMan() {
+		return man;
+	}
+
+
+
+	public void setMan(int man) {
+		this.man = man;
 	}
 
 }

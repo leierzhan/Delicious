@@ -30,10 +30,19 @@
 		<result column="calture" jdbcType="VARCHAR" property="calture"/>
 		<result column="busiiness_licens" jdbcType="VARCHAR" property="busiiness_licens"/>
 		<result column="storerule" jdbcType="INTEGER" property="storerule" />
+		<result column="di" jdbcType="INTEGER" property="di" />
+		<result column="man" jdbcType="INTEGER" property="man" />
 		<result column="status" jdbcType="INTEGER" property="status" />
 		<result column="userid" jdbcType="INTEGER" property="userid" />
 		<result column="timec" jdbcType="VARCHAR" property="timec" />
 	</resultMap>
+		
+      <!-- 用户足迹列表 -->
+      <select id="getStoreByCode" parameterType="string" resultMap="storeinfo">
+	select s.storename, s.id,s.level,s.imgsurl,sr.di,sr.man from d_wx_store s inner join d_wx_storerule sr on sr.id= s.storerule where s.id in 
+ 	(select storeid from d_wx_merchant where ercode=#{ercode})
+       
+     </select>
 	
 	<select id="getStoreUpdateinfo" parameterType="integer" resultMap="storeinfo">
 	

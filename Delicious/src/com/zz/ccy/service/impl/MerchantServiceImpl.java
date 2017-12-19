@@ -22,6 +22,7 @@ import com.zz.ccy.lf.entity.MerchantInfo;
 import com.zz.ccy.lf.entity.StoreInfoupdate;
 import com.zz.ccy.lf.entity.Storerule;
 import com.zz.ccy.service.MerchantService;
+import com.zz.ccy.util.AdvancedUtil;
 import com.zz.ccy.util.Constant;
 
 /**
@@ -48,8 +49,16 @@ public class MerchantServiceImpl implements MerchantService{
 		return mer.getUserIdByOpenid(openid);
 	}
 	@Override
-	public int addStoreupdate(StoreInfoupdate s)  {
-		return mer.addStoreupdate(s);
+	public int addStoreupdate(StoreInfoupdate s,String path) throws IOException  {
+		
+		String ercode=getErcode();
+		int id=mer.addStoreupdate(s,ercode);
+		
+		AdvancedUtil ad=new AdvancedUtil();
+		
+		System.out.println("Â·¾¶£º------------"+path+s.getId()+".jpg");
+		ad.gennireQRCode(path+"/"+id+".jpg", "http://www.cnmjw.com.cn/Delicious/page/sys?code="+ercode);
+		return id;
 	}
 	@Override
 	public int addChef(ChefEntity c) {
@@ -160,6 +169,20 @@ public class MerchantServiceImpl implements MerchantService{
 	    }     
 	    return sb.toString();     
 	 }
+	@Override
+	//¶þÎ¬Âë±àºÅ
+	public  String getErcode() {
+	    //Ëæ»ú×Ö·û´®µÄËæ»ú×Ö·û¿â
+	    String KeyString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	    StringBuffer sb = new StringBuffer();
+	    int len = KeyString.length();
+	    for (int i = 0; i < 6; i++) {
+	       sb.append(KeyString.charAt((int) Math.round(Math.random() * (len - 1))));
+	    }
+	    String  s=String.valueOf(System.currentTimeMillis())+sb;
+	    
+	    return s;
+	}
 	@Override
 	public StoreInfo getStoreinfoByuserid(int userid) {
 		// TODO Auto-generated method stub

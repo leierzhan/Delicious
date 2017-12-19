@@ -93,7 +93,7 @@ public interface MerchantDao {
 * @return int    ∑µªÿ¿‡–Õ 
 * @throws
  */
-	int addStoreupdate(StoreInfoupdate s);
+	int addStoreupdate(StoreInfoupdate s,String code);
 	/**
 	 * 
 	 * @param c

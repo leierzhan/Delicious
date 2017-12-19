@@ -192,8 +192,6 @@ $(".ysc").click(function(){
 		});
 		
 		
-		alert(simgsrc);
-		alert(yimgsrc);
 	}
 	
 	var simgsrc="";

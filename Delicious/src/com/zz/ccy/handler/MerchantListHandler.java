@@ -500,19 +500,16 @@ public class MerchantListHandler{
 		@ResponseBody
 		@RequestMapping("addStoreupdate")
 		public Integer addStoreupdate(HttpServletRequest request,@RequestParam("imgs") String imgs,@RequestParam("name") String name,@RequestParam("renjun") String renjun,@RequestParam("focus") String focus,
-				@RequestParam("address") String address,@RequestParam("storerule") int storerule,@RequestParam("tel") String tel,@RequestParam("yimg") String yimg,@RequestParam("pp") String pp){
+				@RequestParam("address") String address,@RequestParam("storerule") int storerule,@RequestParam("tel") String tel,@RequestParam("yimg") String yimg,@RequestParam("pp") String pp) throws IOException{
 			int userid= (Integer) request.getSession().getAttribute("userid");
+			  String path =request.getSession().getServletContext().getRealPath("ercode");  
 			String[] ff=focus.split(",");
 			imgs=imgs.substring(0, imgs.length()-1);
 			String[] ss=imgs.split(",");
-			String lunbo="";
-			for (int i = 0; i < ss.length; i++) {
-				lunbo+=ss[i];
-			}
 			System.out.println(ss[0]);
-			System.out.println(lunbo.substring(0, lunbo.length()-1));
-			StoreInfoupdate s=new StoreInfoupdate(0, 0, name,ss[0].toString(), 4, Integer.parseInt(renjun.toString()), address,lunbo.substring(0, lunbo.length()-1), storerule, ff[0], ff[1], tel, pp,yimg, 0, userid, getNowDateTime());
-			int i=mer.addStoreupdate(s);
+			StoreInfoupdate s=new StoreInfoupdate(0, 0, name,ss[0].toString(), 4, Integer.parseInt(renjun.toString()), address,imgs, storerule, ff[0], ff[1], tel, pp,yimg, 0, userid, getNowDateTime());
+			
+			int i=mer.addStoreupdate(s,path);
 			return i;
 		}
 		

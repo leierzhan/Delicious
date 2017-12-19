@@ -39,8 +39,8 @@
        <mapper resource="com/zz/ccy/mapping/GreensInfoMapper.xml"/>
        <mapper resource="com/zz/ccy/mapping/WeixinStoreupdateMapper.xml"/>
        <mapper resource="com/zz/ccy/mapping/CommentInfoMapper.xml"/>
-         <mapper resource="com/zz/ccy/mapping/WeixinMapper.xml"/>
-          <mapper resource="com/zz/ccy/mapping/MsbMapper.xml"/>
+       <mapper resource="com/zz/ccy/mapping/WeixinMapper.xml"/>
+       <mapper resource="com/zz/ccy/mapping/MsbMapper.xml"/>
    </mappers>
    
 </configuration>

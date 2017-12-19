@@ -21,6 +21,7 @@ import com.zz.ccy.entity.WeixinGroup;
 import com.zz.ccy.entity.WeixinUserInfo;
 import com.zz.ccy.entity.WeixinUserList;
 import com.zz.ccy.entity.WzInfo;
+import com.zz.ccy.lf.entity.StoreInfoupdate;
 import com.zz.ccy.util.AdvancedUtil;
 import com.zz.ccy.util.TokenThread;
 /**
@@ -241,6 +242,9 @@ public class UserDaoImpl implements UserDao{
 	public WeixinUserInfo getUserInfoById(Integer userId) {
 		return getSession().selectOne("com.zz.ccy.mapping.WeixinUserInfoMapper.getUserInfoById",userId);
 	}
+	/**
+	 * 暂时没有用
+	 */
 	@Override
 	public void initUserStatus(int userid,String ercode) {
 	        	 Map<String, Object> m=new HashMap<String, Object>();
@@ -252,9 +256,15 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public List<Msb> getUserMsbList(Msb msb) {
 		Map<String,Object> map=new HashMap<String, Object>();
-		map.put("storeid", msb.getStoreid());
+		map.put("userid", msb.getUserid());
 		map.put("code", msb.getCode());
+		System.out.println(msb.getUserid()+"----"+msb.getCode());
 		return getSession().selectList("com.zz.ccy.mapping.MsbMapper.getUserMsblist",map);
+	}
+	@Override
+	public StoreInfoupdate getStoreinfoByCode(String code) {
+		// TODO Auto-generated method stub
+		return getSession().selectOne("com.zz.ccy.mapping.WeixinStoreupdateMapper.getStoreByCode",code);
 	}
 
 

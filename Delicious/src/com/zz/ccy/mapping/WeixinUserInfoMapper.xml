@@ -77,18 +77,17 @@
 	     <result column="userid" jdbcType="INTEGER" property="userid" />
 	     <result column="msb" jdbcType="INTEGER" property="msb" />
 	     <result column="zdmsb" jdbcType="INTEGER" property="zdmsb" />
-	     <result column="code" jdbcType="VARCHAR" property="code" />
 	     <result column="wzstatus" jdbcType="INTEGER" property="wzstatus" />
 	     <result column="scstatus" jdbcType="INTEGER" property="scstatus" />
 	     <result column="zjstatus" jdbcType="INTEGER" property="zjstatus" />
 	     <result column="tzstatus" jdbcType="INTEGER" property="tzstatus" />
      </resultMap>
-
+<!-- 
 	<insert id="addUserCore" parameterType="map">
 	
 	insert into d_wx_userCoreStatus(userid,code)values(#{userid},#{code})
 	
-	</insert>     
+	</insert>    -->  
      
      <!-- 用户头像信息 -->
      <resultMap type="com.zz.ccy.entity.UserHeadinfo" id="userHeadinfo">
@@ -104,6 +103,7 @@
          <result column="openid" jdbcType="VARCHAR" property="openid" />
          <result column="userid" jdbcType="INTEGER" property="userid" />
 	     <result column="storeid" jdbcType="INTEGER" property="storeid" />
+	      <result column="ercode" jdbcType="VARCHAR" property="ercode" />
 	     <result column="status" jdbcType="INTEGER" property="status" />
 	     <result column="timec" jdbcType="VARCHAR" property="timec" />
      </resultMap>
@@ -115,7 +115,13 @@
      
      <select id="addMerchant"  parameterType="map" >
      
-     	{ call pro_updateMerchant (#{userid},#{storeid},#{timec})}
+     	{ call pro_updateMerchant (#{userid},#{storeid},#{code},#{timec})}
+     
+     </select>
+     
+       <select id="getMerchantBycode" parameterType="string" resultMap="merchant">
+     
+     select * from d_wx_merchant where ercode=#{code}
      
      </select>
      

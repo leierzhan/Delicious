@@ -4,11 +4,13 @@ public class MerchantInfo {
 private int id;
 private int userid;
 private int storeid;
+private String ercode;
 private int status;
 private String timec;
-public MerchantInfo(int id,int userid,int storeid, int status, String timec) {
+public MerchantInfo(int id,int userid,int storeid,String ercode, int status, String timec) {
 	super();
 	this.id = id;
+	this.ercode=ercode;
 	this.userid=userid;
 	this.storeid=storeid;
 	this.status = status;
@@ -47,5 +49,11 @@ public int getUserid() {
 }
 public void setUserid(int userid) {
 	this.userid = userid;
+}
+public String getErcode() {
+	return ercode;
+}
+public void setErcode(String ercode) {
+	this.ercode = ercode;
 }
 }

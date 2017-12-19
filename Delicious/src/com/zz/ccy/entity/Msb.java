@@ -17,7 +17,7 @@ public Msb(int id, int userid, int num, int storeid, int status,
 	this.status = status;
 	this.starttime = starttime;
 	this.endtime = endtime;
-	this.setCode(code);
+	this.code=code;
 }
 
 @Override

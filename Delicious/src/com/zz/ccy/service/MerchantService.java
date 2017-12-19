@@ -31,7 +31,7 @@ public interface MerchantService {
 	
 	int getUserIdByOpenid(String openid);
 
-	int addStoreupdate(StoreInfoupdate s);
+	int addStoreupdate(StoreInfoupdate s,String path) throws IOException;
 	
 	int addChef(ChefEntity c);
 	
@@ -150,5 +150,7 @@ public interface MerchantService {
 	//出是绑定的用户id查询厨师所在店铺信息
 	public StoreInfo getStoreinfoByuserid(int userid) ;
 	
+	//二维码编号
+	public  String getErcode();
 	
 }

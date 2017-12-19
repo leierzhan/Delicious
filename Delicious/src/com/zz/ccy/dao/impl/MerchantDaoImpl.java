@@ -53,12 +53,13 @@ public class MerchantDaoImpl implements MerchantDao{
 	}
 
 	@Override
-	public int addStoreupdate(StoreInfoupdate s) {
+	public int addStoreupdate(StoreInfoupdate s,String code) {
 		System.out.println("进入添加");
 		int i=getSession().insert("com.zz.ccy.mapping.WeixinStoreupdateMapper.addStoreupdate",s);
 		Map<String,Object> m=new HashMap<String, Object>();
 		m.put("userid", s.getUserid());
 		m.put("storeid",s.getId());
+		m.put("code",code);
 		m.put("timec",getNowDateTime());
 		//添加和更新用户和店铺关系
 		getSession().selectOne("com.zz.ccy.mapping.WeixinUserInfoMapper.addMerchant",m);

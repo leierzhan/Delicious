@@ -22,9 +22,8 @@
      
               <!-- 根据用户id和店铺id进行查询可使用的美食币个数 -->
      <select id="getUserMsblist" parameterType="map" resultMap="msb">
-     
-     select  msb.id,msb.userid,msb.num,msb.storeid,msb.status,msb.starttime,msb.endtime from d_wx_msb msb inner join d_wx_userCoreStatus us on us.userid=msb.userid where
- (msb.storeid=0 or msb.storeid=#{storeid}) and us.code=#{code}
+ select  msb.id,msb.userid,msb.num,msb.storeid,msb.status,msb.starttime,msb.endtime  from d_wx_msb msb where (msb.storeid in
+(select storeid from d_wx_merchant where  ercode=#{code} ) and userid =#{userid} ) or userid =#{userid}
        
      </select>
 

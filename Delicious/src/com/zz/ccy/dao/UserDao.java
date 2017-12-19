@@ -15,6 +15,7 @@ import com.zz.ccy.entity.WeixinGroup;
 import com.zz.ccy.entity.WeixinUserInfo;
 import com.zz.ccy.entity.WeixinUserList;
 import com.zz.ccy.entity.WzInfo;
+import com.zz.ccy.lf.entity.StoreInfoupdate;
 
 /**
  * 
@@ -228,4 +229,7 @@ public interface UserDao {
 	public WeixinUserInfo getUserInfoById(Integer userId);
 	
 	public List<Msb> getUserMsbList(Msb msb);
+	
+	//根据code查询店铺信息
+	public StoreInfoupdate getStoreinfoByCode(String code);
 }

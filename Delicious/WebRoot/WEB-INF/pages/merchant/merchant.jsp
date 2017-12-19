@@ -102,6 +102,17 @@ $(document).ready(function(){
 		var url=$(this).attr("title");
 		window.location.href=url;
 	});
+	$(".sk").click(function(){
+		$(".erimg").css("z-index","1000");
+		$(".erimg").css("width","120");
+		$(".erimg").css("height","120");
+	});
+	$(".erimg").click(function(){
+		$(".erimg").css("z-index","1000");
+		$(".erimg").css("width","80");
+		$(".erimg").css("height","80");
+	});
+	
 });
 </script>
 
@@ -112,15 +123,14 @@ $(document).ready(function(){
   <h1 class="title">商户中心</h1>
 </header>
 
-  <p class="buttons-row" style="margin-top:60px; ">
+  <p class="buttons-row" style="margin-top:45px; ">
 
   <a href="javascript:;" class="button sys" style="height:65px;border:none;">
- <img alt="" src="../imgsvg/sys.svg" style="width:40px;"/><br>扫一扫
+ <img alt="" src="../ercode/${store.id}.jpg" style="width:80px;" class='erimg'/><br><code class="sk">收款二维码</code>
  </a>
-  <a href="http://127.0.0.1:8080/Delicious/merchant/goPage?url=nonum" class="button" style="height:65px;border:none;"> 
-   <img alt="" src="../imgsvg/no.svg" style="width:40px;"/><br>输入号码</a>
+ 
   </p>
-   <div class="list-block media-list" style="margin:0;" >
+   <div class="list-block media-list" style="margin-top:50px;" >
       <ul>
         <li>
           <a href="../storeHandler/storeDetailUI?storeId=${store.id}&userId=${userid}" class="item-link item-content" style="background-color:orange;">
@@ -137,7 +147,7 @@ $(document).ready(function(){
         </li>
       </ul>
    </div>
-     <div class="list-block" style="margin:0;">
+     <div class="list-block" style="margin-top:-30px;">
       <ul>
     <li class="item-content">
           <div class="item-inner">
@@ -148,7 +158,7 @@ $(document).ready(function(){
         </div>
         <div style="width:100%;height:auto;text-align:center;">
         
-      <div class="row  no-gutter" style="margin:0 auto;" >
+      <div class="row  no-gutter" style="margin:-0px auto;margin-top:-30px;" >
       
   
         <div class="col-40 go" title="../merchant/goUpdateStoreinfo" style="height:85px;background-color:#ddb23b;color:#eee;padding:8px;">

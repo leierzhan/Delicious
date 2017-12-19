@@ -13,6 +13,7 @@ import com.zz.ccy.entity.WeixinGroup;
 import com.zz.ccy.entity.WeixinUserInfo;
 import com.zz.ccy.entity.WeixinUserList;
 import com.zz.ccy.entity.WzInfo;
+import com.zz.ccy.lf.entity.StoreInfoupdate;
 /**
  * @author lez
  *
@@ -244,4 +245,5 @@ public interface UserService {
 
 	
 	public List<Msb> getUserMsbList(Msb msb) ;
+	public StoreInfoupdate getStoreinfoByCode(String code);
 }

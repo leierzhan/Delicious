@@ -17,7 +17,7 @@ public class UserCorepage {
 		return username;
 	}
 	public UserCorepage(int userid, String headimg, String username,
-			String sex, int msb, int zdmsb,String code, int wzstatus, int scstatus,
+			String sex, int msb, int zdmsb,int wzstatus, int scstatus,
 			int zjstatus, int tzstatus) {
 		super();
 		this.userid = userid;
@@ -26,7 +26,6 @@ public class UserCorepage {
 		this.sex = sex;
 		this.msb = msb;
 		this.zdmsb = zdmsb;
-		this.code=code;
 		this.wzstatus = wzstatus;
 		this.scstatus = scstatus;
 		this.zjstatus = zjstatus;
@@ -83,7 +82,6 @@ public class UserCorepage {
 	private String sex;
 	private int msb;
 	private int zdmsb;
-	private String code;
 	private int wzstatus;
 	private int scstatus;
 	private int zjstatus;
@@ -91,11 +89,5 @@ public class UserCorepage {
 	public UserCorepage() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-	public String getCode() {
-		return code;
-	}
-	public void setCode(String code) {
-		this.code = code;
 	}
 }
