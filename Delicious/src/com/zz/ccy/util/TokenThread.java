@@ -15,7 +15,6 @@ public class TokenThread implements Runnable {
             try {  
             	CommonUtil commonUtil = new CommonUtil();
                 accessToken =commonUtil.getToken(Constant.appid,Constant.appsecret);
-                System.out.println("#################################token"+accessToken);
             	if (null != accessToken) {  
                     System.out.println("获取access_token成功，有效时长{}秒 token:{}"+","+accessToken.getExpiresIn()+","+accessToken.getAccessToken());
                     //更新数据库中的accessToken
@@ -30,8 +29,6 @@ public class TokenThread implements Runnable {
 						int a =ps.executeUpdate();
 						if(a>0){
 						
-						
-							
 							
 							System.out.println("更新token成功");
 						}
@@ -47,7 +44,6 @@ public class TokenThread implements Runnable {
 					}
         	    	//更新签名
         	    	Qianming.updateUrlSignatrue();
-        			System.out.println("更新URL成功");
                     //休眠7000秒  
                     Thread.sleep((accessToken.getExpiresIn() - 200) * 1000);  
                 } else {  
