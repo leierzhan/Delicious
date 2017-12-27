@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+例如namespace="me.gacl.mapping.userMapper"就是me.gacl.mapping(包名)+userMapper(userMapper.xml文件去除后缀)
+ -->
+<mapper namespace="com.zz.ccy.mapping.MerchantInfoMapper">
+
+   <cache/><!-- 开启本mapper的namespace下的二级缓存 -->
+     <resultMap type="com.zz.ccy.entity.Merchant" id="MerchantInfoResult">
+       <id column="id" jdbcType="INTEGER" property="id"/>
+       <result column="userid" jdbcType="INTEGER" property="userId"/>
+       <result column="storeid" jdbcType="INTEGER" property="storeId"/>
+       <result column="ercode" jdbcType="VARCHAR" property="ercode"/>
+       <result column="status" jdbcType="INTEGER" property="status"/>
+       <result column="timec" jdbcType="VARCHAR" property="timec"/>
+     </resultMap>
+     <select id="getStoreIdByCode" parameterType="string" resultType="Integer">
+        select storeid from d_wx_merchant where ercode=#{code}
+     </select>
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+例如namespace="me.gacl.mapping.userMapper"就是me.gacl.mapping(包名)+userMapper(userMapper.xml文件去除后缀)
+ -->
+<mapper namespace="com.zz.ccy.mapping.OrderRecordMapper">
+     <cache/><!-- 开启本mapper的namespace下的二级缓存 -->
+     <resultMap type="com.zz.ccy.entity.OrderRecord" id="OrderRecordInfoResult">
+       <id column="id" jdbcType="INTEGER" property="id"/>
+       <result column="user_id" jdbcType="INTEGER" property="userId"/>
+       <result column="store_id" jdbcType="INTEGER" property="storeId"/>
+       <result column="universal_count" jdbcType="INTEGER" property="universalCount"/>
+       <result column="unique_count" jdbcType="INTEGER" property="uniqueCount"/>
+         <result column="create_time" jdbcType="VARCHAR" property="createTime"/>
+     </resultMap>
+     <!-- 查询是否有这么多币 -->
+     <select id="getMsb" parameterType="java.util.Map" resultType="Integer">
+       select id from d_wx_msb where userid=#{userId} and (num>=#{universalCount} and storeId!=0)
+       or (num>=#{uniqueCount} and storeid=0)
+     </select>
+    <!-- 处理订单 -->
+    <!-- 顾客美食币表减去消费的币 -->
+    <update id="msgManager" parameterType="java.util.Map">
+       update d_wx_msb set num=num-#{uniqueCount} where storeid=0;       
+       update d_wx_msb set num=num-#{universalCount} where storeid!=0;
+    </update>
+    <!-- 向订单记录表中插入数据 -->
+    <insert id="insertOrder" parameterType="java.util.Map">
+       insert into d_wx_coin_record (user_id,store_id,universal_coin,unique_coin,create_time,status) values
+       (#{userId},#{storeId},#{universalCount},#{uniqueCount},#{createTime},#{status})
+    </insert>
+</mapper>
