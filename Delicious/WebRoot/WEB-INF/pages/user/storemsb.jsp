@@ -60,7 +60,7 @@ color:#eeeeee;
  
     <div class="headline-bg">  
   <h1 style="color:#eeeeee;text-align:center;">${msb}</h1>
-  <div class="zq"><span><a href="javascript:void();">赚取枚士币<span style="color:yellow;">&nbsp;|&nbsp;</span></a></span><span><a href="page/goMsbZs">赠送</a></span></div>
+  <div class="zq"><span><a href="javascript:void();">赚取枚士币<span style="color:yellow;">&nbsp;|&nbsp;</span></a></span><span><a href="../page/goMsbZs">赠送</a></span></div>
   
   </div>
   <c:forEach items="${storemsb}" var="s">

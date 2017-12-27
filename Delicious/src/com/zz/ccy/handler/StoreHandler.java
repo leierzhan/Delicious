@@ -4,9 +4,7 @@ package com.zz.ccy.handler;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.zz.ccy.entity.ChefEntity;
 import com.zz.ccy.entity.CommentEntity;
 import com.zz.ccy.entity.OauthAccessToken;
@@ -25,7 +22,12 @@ import com.zz.ccy.service.ArticleService;
 import com.zz.ccy.service.StoreService;
 import com.zz.ccy.service.UserService;
 import com.zz.ccy.util.AdvancedUtil;
-
+/**
+ * @ClassName: StoreHandler
+ * @Description: 商家板块
+ * @author: David
+ * @date: 2017年12月19日 下午1:53:07
+ */
 @Controller
 @RequestMapping("/storeHandler")
 public class StoreHandler {
@@ -52,7 +54,6 @@ public class StoreHandler {
 				int userId=userService.getUserIdByOpenId(openId);
 				attr.addFlashAttribute("userId",userId);
 				//直接跳转到业务页面
-				System.out.println("用户id"+userId);
 				return "redirect:/storeHandler/storeList";
 			}else{
 				//再以snsapi_userinfo模式授权
@@ -115,7 +116,6 @@ public class StoreHandler {
     		map.put("latitude",latitude);
     		map.put("position",position);
     	}
-    	System.out.println("经纬度:"+longitude+","+latitude+","+position);
     	//城市定位
 		return "store_list";
 	} 
@@ -134,7 +134,6 @@ public class StoreHandler {
     	session.setAttribute("longitude",longitude);
     	session.setAttribute("latitude",latitude);
     	session.setAttribute("position",position);
-    	System.out.println("位置返回到页面："+longitude+","+latitude+",,"+position);
     	return storeList;
     }
     //跳转到店铺详情页面
@@ -183,7 +182,6 @@ public class StoreHandler {
     @RequestMapping("/foodDetail")
     public String foodDetail(@RequestParam("foodId") Integer foodId){
     	//根据菜id获取菜详细信息
-    	
     	return "food_detail";
     }
     /**
@@ -262,7 +260,6 @@ public class StoreHandler {
     @RequestMapping("/saveComment")
     public void saveComment(@RequestParam("storeId") Integer storeId,@RequestParam("userId") Integer userId,
     		@RequestParam("content") String content){
-    	System.out.println("hahahaha"+content);
     	storeService.saveComment(storeId,userId,content);
     }
 }

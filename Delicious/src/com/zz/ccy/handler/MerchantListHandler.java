@@ -135,7 +135,7 @@ public class MerchantListHandler{
 	   //进入店铺列表
 	   @RequestMapping("goMerchantSystest")
 	   private ModelAndView goMerchantSystest(HttpServletRequest request){
-		   String openid="ofcpN0lFLo5P5djxVugirDSztAUY";
+		   String openid="ofcpN0rvlmJECR92K0PwT5AIaiUA";
 		   request.getSession().setAttribute("openid",openid);
 		   System.out.println("openid:"+openid);
 		   WeixinUserInfo user=mer.getUserByOpenid(openid);
@@ -497,6 +497,7 @@ public class MerchantListHandler{
 	        //服务器上传	 
 	        return ss;  
 	    }
+		
 		@ResponseBody
 		@RequestMapping("addStoreupdate")
 		public Integer addStoreupdate(HttpServletRequest request,@RequestParam("imgs") String imgs,@RequestParam("name") String name,@RequestParam("renjun") String renjun,@RequestParam("focus") String focus,

@@ -70,7 +70,7 @@ public abstract class Erweima {
 		//设置背景颜色为白色
 		g.setBackground(Color.white);
 		//填充到纸上来
-		g.fillRect(0, 0, 140, 140);
+		g.fillRect(0, 0, 200, 200);
 		//设置二维码的前景色-黑色
 		g.setColor(Color.green);
 		//javac cavaj

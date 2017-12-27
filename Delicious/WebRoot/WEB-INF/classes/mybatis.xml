@@ -41,6 +41,8 @@
        <mapper resource="com/zz/ccy/mapping/CommentInfoMapper.xml"/>
        <mapper resource="com/zz/ccy/mapping/WeixinMapper.xml"/>
        <mapper resource="com/zz/ccy/mapping/MsbMapper.xml"/>
+       <mapper resource="com/zz/ccy/mapping/OrderRecordMapper.xml"/>
+       <mapper resource="com/zz/ccy/mapping/MerchantInfoMapper.xml"/>
    </mappers>
    
 </configuration>

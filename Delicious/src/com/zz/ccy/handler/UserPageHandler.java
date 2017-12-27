@@ -17,6 +17,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -183,6 +184,7 @@ public class UserPageHandler{
 	   @RequestMapping("sys")
 	   public ModelAndView sys(String code ,HttpServletRequest request){
 		   int userid=(Integer) request.getSession().getAttribute("userid");
+		   request.getSession().setAttribute("code", code);
 		   Msb msb=new Msb();
 		   msb.setUserid(userid);
 		   msb.setCode(code);
@@ -196,7 +198,21 @@ public class UserPageHandler{
 		  return mv;
 	   }
 	   
-	   
+	   //用户验证密码
+	   @ResponseBody
+	   @RequestMapping("passCheck")
+	   public int passCheck(String ercode ,HttpServletRequest request){
+		   System.out.println(ercode);
+		   int userid=(Integer) request.getSession().getAttribute("userid");
+		   WeixinUserInfo user=userService.getUserInfo(userid);
+		   if(ercode.equals(user.getErcode())){
+			   return userid;
+		   }else{
+			   return 0;
+		   }
+		  
+		  
+	   }
 	   
 	   
 	   
