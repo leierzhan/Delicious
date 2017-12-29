@@ -104,13 +104,18 @@ $(document).ready(function(){
 	});
 	$(".sk").click(function(){
 		$(".erimg").css("z-index","1000");
-		$(".erimg").css("width","120");
-		$(".erimg").css("height","120");
+		$(".erimg").css("width","200");
+		$(".erimg").css("height","200");
+		$(".erimg").css("margin","8");
+		$(".st").css("margin-top",200);
 	});
+	
 	$(".erimg").click(function(){
 		$(".erimg").css("z-index","1000");
+		$(".erimg").css("margin","8");
 		$(".erimg").css("width","80");
 		$(".erimg").css("height","80");
+		$(".st").css("margin-top",50);
 	});
 	
 });
@@ -130,7 +135,7 @@ $(document).ready(function(){
  </a>
  
   </p>
-   <div class="list-block media-list" style="margin-top:50px;" >
+   <div class="list-block media-list st" style="margin-top:50px;" >
       <ul>
         <li>
           <a href="../storeHandler/storeDetailUI?storeId=${store.id}&userId=${userid}" class="item-link item-content" style="background-color:orange;">
@@ -158,27 +163,30 @@ $(document).ready(function(){
         </div>
         <div style="width:100%;height:auto;text-align:center;">
         
-      <div class="row  no-gutter" style="margin:-0px auto;margin-top:-30px;" >
-      
-  
-        <div class="col-40 go" title="../merchant/goUpdateStoreinfo" style="height:85px;background-color:#ddb23b;color:#eee;padding:8px;">
+            <div class="row no-gutter" style="text-align:center;margin:-0px auto;margin-top:-30px;" >
+               <div class="col-100 go" title="../merchant/goUpdateStoreinfo" style="height:85px;background-color:#ddb23b;color:#eee;padding:8px;">
          <img alt="" src="../imgsvg/store.svg" style="width:40px;"/><br>
         店铺信息
          </div>
+     
+        </div>
+        
+      <div class="row no-gutter"  style="margin:0 auto;">
+      
+   <div class="col-50 go" title="../merchant/goChefList" style="height:85px;background-color:#66ddee;color:#eee;padding:8px;">
+     <img alt="" src="../imgsvg/wenzhang.svg" style="width:40px;"/><br>     
+        店铺厨师</div>
+     
          
            
            
-        <div class="col-60 go" title="../merchant/goGreens" style="	height:85px;background-color:#1288bb;color:#eee;padding:8px;">
+        <div class="col-50 go" title="../merchant/goGreens" style="	height:85px;background-color:#1288bb;color:#eee;padding:8px;">
           <img alt="" src="../imgsvg/cai.svg" style="width:40px;"/><br>
         菜品信息</div>
         
                 
       </div>
-      <div class="row no-gutter"  style="margin:0 auto;">
-      <div class="col-100 go" title="../merchant/goChefList" style="height:85px;background-color:#66ddee;color:#eee;padding:8px;">
-     <img alt="" src="../imgsvg/wenzhang.svg" style="width:40px;"/><br>     
-        店铺厨师</div>
-        </div>
+  
         
       <div class="row no-gutter"  style="margin:0 auto;">
                     <div class="col-50 go" title="../merchant/goPage?url=wzlist" style="height:85px;background-color:#666666;color:#eee;padding:8px;">
@@ -186,7 +194,7 @@ $(document).ready(function(){
         店铺文章</div>
     
 
-        <div class="col-50 go" title="../merchant/goPage?url=qianlist" style="height:85px;background-color:#3570dd;color:#eee;padding:8px;">
+        <div class="col-50 go" title="../merchant/storeTrading?timec=2017" style="height:85px;background-color:#3570dd;color:#eee;padding:8px">
           <img alt="" src="../imgsvg/record.svg" style="width:40px;"/><br>
           
         收款记录</div>

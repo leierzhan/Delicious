@@ -14,6 +14,7 @@ import com.zz.ccy.dao.StoreDao;
 import com.zz.ccy.entity.ChefEntity;
 import com.zz.ccy.entity.CommentEntity;
 import com.zz.ccy.entity.StoreInfo;
+import com.zz.ccy.entity.StoretradingRecord;
 import com.zz.ccy.lf.entity.Greens;
 /**
  * 
@@ -124,4 +125,5 @@ public class StoreDaoImpl implements StoreDao{
 	  map.put("content", content);
       getSession().insert("com.zz.ccy.mapping.CommentInfoMapper.saveComment",map);		
 	}
+
 }

@@ -10,6 +10,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import com.zz.ccy.entity.ChefEntity;
 import com.zz.ccy.entity.StoreInfo;
+import com.zz.ccy.entity.StoretradingRecord;
 import com.zz.ccy.entity.WeixinUserInfo;
 import com.zz.ccy.lf.entity.Greens;
 import com.zz.ccy.lf.entity.Jsconfig;
@@ -153,4 +154,7 @@ public interface MerchantService {
 	//二维码编号
 	public  String getErcode();
 	
+	
+	  //根据时间进行店铺交易记录查询
+	  public List<StoretradingRecord> getStoretrading(String timec,int storeid);
 }

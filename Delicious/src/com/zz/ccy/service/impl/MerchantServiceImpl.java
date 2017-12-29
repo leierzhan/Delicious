@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.zz.ccy.dao.MerchantDao;
 import com.zz.ccy.entity.ChefEntity;
 import com.zz.ccy.entity.StoreInfo;
+import com.zz.ccy.entity.StoretradingRecord;
 import com.zz.ccy.entity.WeixinUserInfo;
 import com.zz.ccy.lf.entity.Greens;
 import com.zz.ccy.lf.entity.Jsconfig;
@@ -197,6 +198,10 @@ public class MerchantServiceImpl implements MerchantService{
 	public List<Greens> getGreensListBuChefid(int chefid) {
 		return mer.getGreensListByChefid(chefid);
 	}
-
+	@Override
+	public List<StoretradingRecord> getStoretrading(String timec,int storeid) {
+		// TODO Auto-generated method stub
+		return mer.getStoretrading(timec,storeid);
+	}
 
 }

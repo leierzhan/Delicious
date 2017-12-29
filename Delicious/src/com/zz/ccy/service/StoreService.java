@@ -5,6 +5,7 @@ import java.util.List;
 import com.zz.ccy.entity.ChefEntity;
 import com.zz.ccy.entity.CommentEntity;
 import com.zz.ccy.entity.StoreInfo;
+import com.zz.ccy.entity.StoretradingRecord;
 import com.zz.ccy.lf.entity.Greens;
 
 /**
@@ -89,4 +90,5 @@ public interface StoreService {
 		Integer userId);
   //±£¥Ê∆¿¬€
   public void saveComment(Integer storeId, Integer userId, String content);
+
 }

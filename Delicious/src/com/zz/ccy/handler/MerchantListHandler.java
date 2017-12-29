@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.zz.ccy.entity.ChefEntity;
 import com.zz.ccy.entity.OauthAccessToken;
 import com.zz.ccy.entity.StoreInfo;
+import com.zz.ccy.entity.StoretradingRecord;
 import com.zz.ccy.entity.User;
 import com.zz.ccy.entity.WeixinUserInfo;
 import com.zz.ccy.lf.entity.Greens;
@@ -654,7 +655,17 @@ public class MerchantListHandler{
 			   ModelAndView mv=goGreens(request);
 			   return mv;
 		   }
-		
+		   
+		   //成查询店铺交易记录
+		   @RequestMapping(value="storeTrading")
+		   private ModelAndView storeTrading(String timec,HttpServletRequest req){
+			   System.out.println("**********_________---"+timec);
+			  int storeid=(Integer) req.getSession().getAttribute("storeid");
+			  System.out.println(storeid+"---------------------------storeid");
+			  List<StoretradingRecord> str= mer.getStoretrading(timec,storeid);
+			   ModelAndView mv=new ModelAndView("merchant/storetrading","str",str);
+			   return mv;
+		   }
 		
 		
 		

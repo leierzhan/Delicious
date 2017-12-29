@@ -10,6 +10,7 @@ import com.zz.ccy.dao.StoreDao;
 import com.zz.ccy.entity.ChefEntity;
 import com.zz.ccy.entity.CommentEntity;
 import com.zz.ccy.entity.StoreInfo;
+import com.zz.ccy.entity.StoretradingRecord;
 import com.zz.ccy.lf.entity.Greens;
 import com.zz.ccy.service.StoreService;
 
@@ -92,4 +93,5 @@ public class StoreServiceImpl implements StoreService{
 	public void saveComment(Integer storeId,Integer userId,String content){
 		storeDao.saveComment(storeId, userId, content);
 	}
+
 }

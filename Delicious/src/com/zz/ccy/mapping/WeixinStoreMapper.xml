@@ -102,4 +102,26 @@
      </select>
      
      
+       <resultMap type="com.zz.ccy.entity.StoretradingRecord" id="Storetradingrecord">
+       <id column="id" jdbcType="INTEGER" property="id"/>
+       <result column="user_id" jdbcType="INTEGER" property="user_id"/>
+       <result column="store_id" jdbcType="INTEGER" property="store_id"/>
+       <result column="universal_coin" jdbcType="INTEGER" property="universal_coin"/>
+       <result column="unique_coin" jdbcType="INTEGER" property="unique_coin"/>
+       <result column="openId" jdbcType="VARCHAR" property="openId"/>
+       <result column="headImgUrl" jdbcType="VARCHAR" property="headImgUrl"/>
+       <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
+       <result column="create_time" jdbcType="VARCHAR" property="create_time"/>
+       </resultMap>
+    
+    
+      <select id="getStr" parameterType="string" resultMap="Storetradingrecord">
+    SELECT id, user_id, store_id, universal_coin, unique_coin, create_time, openId, headImgUrl, nickname
+FROM     v_store_trading_record
+WHERE   (create_time LIKE CONCAT('%','${timec}','%' ) and store_id=#{storeid} )
+ORDER BY create_time DESC
+    
+    </select>
+     
+     
      </mapper>

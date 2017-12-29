@@ -52,4 +52,21 @@
     <select id="getStoreInfoById" parameterType="int" resultType="com.zz.ccy.entity.StoreInfo">
        select s.id,s.imgsurl,s.storename,s.level,s.per_capite,s.storerule,s.address,s.latitude,s.longitude,s.tel from d_wx_store s where s.id=#{storeId}
     </select>
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </mapper>

@@ -50,12 +50,10 @@ $(document).ready(function(){
 </script>
 <style>
 code{
-border:1px solid yellow;
 border-radius:4px;
 margin-left:4px;
 padding:5px;
-background-color: orange;
-color:#eee;	
+color:gray;	
 }
 
 
@@ -68,37 +66,34 @@ color:#eee;
   <button class="button pull-left go" title="../merchant/goMerchantSys">
       首页
     </button>
-    <button class="button pull-right go" title="../merchant/goAddGreensByStore">
-      +
-    </button>
+
     <h1 class="title">收款记录</h1>
   </header>
 	<div class="content" style="margin-top:-40px;">
 		<div class="list-block media-list">
 			<ul>
-			<c:if test="${empty grs}">
+			<c:if test="${empty str}">
 				<li style="text-align:center;height:35px;color:#8d8d8d;line-height:35px;">
 			-没有收款记录-
 			</li>
 			</c:if>
-			<c:if test="${!empty grs}">
+			<c:if test="${!empty str}">
 			
-			<c:forEach items="${grs}" var="g" >
-				<li><a href="../merchant/goUpdateGreens?id=${g.id}" class="item-link item-content">
+			<c:forEach items="${str}" var="g" >
+				<li><a href="" class="item-link item-content">
 						<div class="item-media">
 							<img
-								src="${g.imgs}"
+								src="${g.headImgUrl}"
 								width="80">
 						</div>
 						<div class="item-inner">
 							<div class="item-title-row">
-								<div class="item-title" style="padding-left:4px;"><b>${g.name}</b></div>
-								<div class="item-after">￥${g.price}</div>
+								<div class="item-title" style="padding-left:4px;"><b>${g.nickname}</b></div>
+								<div class="item-after">消费：通用币${g.universal_coin}个，店铺币${g.unique_coin}</div>
 							</div>
-							<div class="item-subtitle"><code>${g.tags}</code></div>
-							<div style="line-height:40px;margin:4px;font-size:16px;"><img alt="sc" src="../imgsvg/zan.svg" style="width:23px;">&nbsp;${g.zan}
+							<div class="item-subtitle"><code>${g.create_time}</code></div>
+					
 							</div>
-						</div>
 				</a></li>
 			
 				</c:forEach>

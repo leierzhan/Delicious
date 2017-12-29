@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.zz.ccy.entity.ChefEntity;
 import com.zz.ccy.entity.StoreInfo;
+import com.zz.ccy.entity.StoretradingRecord;
 import com.zz.ccy.entity.WeixinUserInfo;
 import com.zz.ccy.lf.entity.Greens;
 import com.zz.ccy.lf.entity.Jsconfig;
@@ -291,6 +292,7 @@ public interface MerchantDao {
 	
 	List<Greens> getGreensListByChefid(int chefid);
 	
-	
+    
+    List<StoretradingRecord> getStoretrading(String timec,int storeid);
 	
 }
