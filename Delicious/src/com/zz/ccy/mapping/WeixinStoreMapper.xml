@@ -114,14 +114,28 @@
        <result column="create_time" jdbcType="VARCHAR" property="create_time"/>
        </resultMap>
     
-    
-      <select id="getStr" parameterType="string" resultMap="Storetradingrecord">
+    <!-- 根据店铺和时间进行店铺交易记录查询 -->
+      <select id="getStr" parameterType="map" resultMap="Storetradingrecord">
     SELECT id, user_id, store_id, universal_coin, unique_coin, create_time, openId, headImgUrl, nickname
 FROM     v_store_trading_record
 WHERE   (create_time LIKE CONCAT('%','${timec}','%' ) and store_id=#{storeid} )
 ORDER BY create_time DESC
     
     </select>
+    
+           <resultMap type="com.zz.ccy.entity.MerchantStatistical" id="ms">
+       <result  column="universal" jdbcType="VARCHAR" property="universal"/>
+       <result column="unique" jdbcType="VARCHAR" property="unique"/>
+       </resultMap>
+    
+    
+    <select id="getSumtradimg" parameterType="map" resultMap="ms">
+    SELECT  SUM(universal_coin) AS universal, SUM(unique_coin) AS [unique]	FROM     d_wx_coin_record
+	WHERE   (create_time LIKE CONCAT('%','${timec}','%' ))  and (store_id=#{storeid}) AND (status = #{status})
+    </select>
+    
+    
+    
      
      
      </mapper>

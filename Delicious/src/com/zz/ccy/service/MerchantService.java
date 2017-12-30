@@ -9,6 +9,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import com.zz.ccy.entity.ChefEntity;
+import com.zz.ccy.entity.MerchantStatistical;
 import com.zz.ccy.entity.StoreInfo;
 import com.zz.ccy.entity.StoretradingRecord;
 import com.zz.ccy.entity.WeixinUserInfo;
@@ -157,4 +158,21 @@ public interface MerchantService {
 	
 	  //根据时间进行店铺交易记录查询
 	  public List<StoretradingRecord> getStoretrading(String timec,int storeid);
+	  /**
+	   * \
+	   * @param time
+	   * @param storeid
+	   * @param status
+	   * @return
+	   *//** 李飞
+	  * @Title: getStatistical 
+	  * @Description: TODO(根据条件进行查询) 
+	  * @param @param time
+	  * @param @param storeid
+	  * @param @param status
+	  * @param @return    设定文件 
+	  * @return MerchantStatistical    返回类型 
+	  * @throws
+	   */
+	  public MerchantStatistical getStatistical(String time, int storeid,int status);
 }

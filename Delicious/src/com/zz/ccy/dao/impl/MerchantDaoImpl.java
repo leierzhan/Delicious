@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import com.zz.ccy.dao.MerchantDao;
 import com.zz.ccy.entity.ChefEntity;
+import com.zz.ccy.entity.MerchantStatistical;
 import com.zz.ccy.entity.StoreInfo;
 import com.zz.ccy.entity.StoretradingRecord;
 import com.zz.ccy.entity.UserCorepage;
@@ -206,5 +207,15 @@ public class MerchantDaoImpl implements MerchantDao{
 		map.put("timec", timec);
 		map.put("storeid",storeid);
 		return this.getSession().selectList("com.zz.ccy.mapping.WeixinStoreMapper.getStr",map);
+	}
+
+	@Override
+	public MerchantStatistical getStatistical(String time, int storeid,
+			int status) {
+		Map<String,Object> map=new HashMap<String, Object>();
+		map.put("timec", time);
+		map.put("storeid",storeid);
+		map.put("status", status);
+		return this.getSession().selectOne("com.zz.ccy.mapping.WeixinStoreMapper.getSumtradimg",map);
 	}
 }

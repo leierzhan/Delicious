@@ -55,9 +55,31 @@ margin-left:4px;
 padding:5px;
 color:gray;	
 }
+.tj{
+position: fixed;
+width:100%;
+top:53px;
+height:100px;
+background-color: orange;
+color:white;
+
+}
+.t{
+width:50%;
+height:100px;
+border:1px solid gray;
+float:left;
+text-align:center;
 
 
-
+}
+.s{
+width:50%;
+height:100px;
+border:1px solid gray;
+float:left;
+text-align:center;
+}
 </style>
 
 
@@ -66,11 +88,28 @@ color:gray;
   <button class="button pull-left go" title="../merchant/goMerchantSys">
       首页
     </button>
-
     <h1 class="title">收款记录</h1>
   </header>
-	<div class="content" style="margin-top:-40px;">
-		<div class="list-block media-list">
+  
+ <div class="tj">
+
+ <div class="t">
+  <img alt="" src="../image/store.svg" style="margin:5px;" width="40">
+ <h4>店铺币<code style="color:yellow;">${ms.universal}</code></h4>
+ </div>
+ <div class="s">
+  <img alt="" src="../image/ty.svg" style="margin:5px;" width="40">
+ <h4>通用币<code style="color:yellow;">${ms.unique}</code></h4>
+ </div>
+ 
+ </div>
+  	
+	  <h3  style="text-align:left;margin-top:160px;color:gray;">收款记录</h3>
+	<div class="content" style="margin-top:160px;">
+	
+
+
+		<div class="list-block media-list" style="margin:0;">
 			<ul>
 			<c:if test="${empty str}">
 				<li style="text-align:center;height:35px;color:#8d8d8d;line-height:35px;">
@@ -84,12 +123,12 @@ color:gray;
 						<div class="item-media">
 							<img
 								src="${g.headImgUrl}"
-								width="80">
+								width="55">
 						</div>
 						<div class="item-inner">
 							<div class="item-title-row">
 								<div class="item-title" style="padding-left:4px;"><b>${g.nickname}</b></div>
-								<div class="item-after">消费：通用币${g.universal_coin}个，店铺币${g.unique_coin}</div>
+								<div class="item-after" style="font-size:16px;">在店消费：通用币${g.universal_coin}个，店铺币${g.unique_coin}</div>
 							</div>
 							<div class="item-subtitle"><code>${g.create_time}</code></div>
 					

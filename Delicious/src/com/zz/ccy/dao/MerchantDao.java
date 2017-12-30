@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.zz.ccy.entity.ChefEntity;
+import com.zz.ccy.entity.MerchantStatistical;
 import com.zz.ccy.entity.StoreInfo;
 import com.zz.ccy.entity.StoretradingRecord;
 import com.zz.ccy.entity.WeixinUserInfo;
@@ -292,7 +293,9 @@ public interface MerchantDao {
 	
 	List<Greens> getGreensListByChefid(int chefid);
 	
-    
+    //根据店铺和时间进行店铺交易查询
     List<StoretradingRecord> getStoretrading(String timec,int storeid);
+    //跟据店铺和和时间以及状态进行交易美食币统计
+    MerchantStatistical getStatistical(String time,int storeid,int status);
 	
 }

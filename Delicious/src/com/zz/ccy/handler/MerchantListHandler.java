@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.zz.ccy.entity.ChefEntity;
+import com.zz.ccy.entity.MerchantStatistical;
 import com.zz.ccy.entity.OauthAccessToken;
 import com.zz.ccy.entity.StoreInfo;
 import com.zz.ccy.entity.StoretradingRecord;
@@ -663,7 +664,11 @@ public class MerchantListHandler{
 			  int storeid=(Integer) req.getSession().getAttribute("storeid");
 			  System.out.println(storeid+"---------------------------storeid");
 			  List<StoretradingRecord> str= mer.getStoretrading(timec,storeid);
-			   ModelAndView mv=new ModelAndView("merchant/storetrading","str",str);
+			  MerchantStatistical ms=mer.getStatistical(timec, storeid, 0);
+			  Map<String, Object> mp=new HashMap<String, Object>();
+			  mp.put("str", str);
+			  mp.put("ms", ms);
+			   ModelAndView mv=new ModelAndView("merchant/storetrading",mp);
 			   return mv;
 		   }
 		
