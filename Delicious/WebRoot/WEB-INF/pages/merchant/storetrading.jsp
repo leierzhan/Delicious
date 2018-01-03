@@ -106,8 +106,6 @@ text-align:center;
   	
 	  <h3  style="text-align:left;margin-top:160px;color:gray;">收款记录</h3>
 	<div class="content" style="margin-top:160px;">
-	
-
 
 		<div class="list-block media-list" style="margin:0;">
 			<ul>

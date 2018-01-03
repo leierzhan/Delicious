@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+例如namespace="me.gacl.mapping.userMapper"就是me.gacl.mapping(包名)+userMapper(userMapper.xml文件去除后缀)
+ -->
+<mapper namespace="com.zz.ccy.mapping.CommentInfoMapper">
+
+     <resultMap type="com.zz.ccy.entity.CommentEntity" id="CommentInfoResult">
+       <id column="id" jdbcType="INTEGER" property="id"/>
+       <result column="comment" jdbcType="VARCHAR" property="comment"/>
+       <result column="storeId" jdbcType="INTEGER" property="storeId"/>
+       <result column="zan" jdbcType="INTEGER" property="zan"/>
+       <result column="status" jdbcType="INTEGER" property="status"/>
+       
+       <association property="weixinUserInfo" column="userid" javaType="com.zz.ccy.entity.WeixinUserInfo">   
+            <id property="id" column="id"/>
+            <result column="openId" jdbcType="VARCHAR" property="openId"/>
+	        <result column="subscribe" jdbcType="INTEGER" property="subscribe"/>
+	        <result column="subscribeTime" jdbcType="VARCHAR" property="subscribeTime"/>
+	        <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
+	        <result column="age" jdbcType="INTEGER" property="age"/>
+	        <result column="sex" jdbcType="INTEGER" property="sex"/>
+	        <result column="country" jdbcType="VARCHAR" property="country"/>
+	        <result column="province" jdbcType="VARCHAR" property="province"/>
+	        <result column="city" jdbcType="VARCHAR" property="city"/>
+	        <result column="language" jdbcType="VARCHAR" property="language"/>
+	        <result column="headImgUrl" jdbcType="VARCHAR" property="headImgUrl"/>
+	        <result column="groupId" jdbcType="INTEGER" property="groupId"/>
+	        <result column="address" jdbcType="VARCHAR" property="address"/>
+	        <result column="tel" jdbcType="VARCHAR" property="tel"/>
+	        <result column="email" jdbcType="VARCHAR" property="email"/>
+	        <result column="brithday" jdbcType="VARCHAR" property="brithday"/>
+	        <result column="education" jdbcType="VARCHAR" property="education"/>
+	        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+	        <result column="truename" jdbcType="VARCHAR" property="truename"/>
+        </association>
+     </resultMap>
+    
+    <!-- 根据店铺id查询评论 -->
+    <select id="getCommentByStoreId" parameterType="int" resultMap="CommentInfoResult">
+       select * from d_wx_comment c,d_wx_user_info u where c.storeid=#{storeId} and c.userid=u.id 
+    </select>
+    <!-- 根据店铺id和最后一条评论id加载10条记录 -->
+    <select id="getMoereCommentByStoreId" parameterType="java.util.Map" resultMap="CommentInfoResult">
+       select top 10 * from d_wx_comment c,d_wx_user_info u where c.storeid=#{storeId} and c.id>#{commentId} and c.userid=u.id 
+    </select>
+    
+    <!-- 根据店铺id获取最新评论4条 -->
+    <select id="getCommentFour" parameterType="int" resultMap="CommentInfoResult">
+       select top 4 * from d_wx_comment c,d_wx_user_info u where c.storeid=#{storeId}  and c.userid=u.id 
+       order by c.id desc
+    </select>
+    <!-- 获取评论点赞数 -->
+    <select id="getCommentZanCountById" parameterType="int" resultType="int">
+      select c.zan from d_wx_comment c where c.id=#{commentId} 
+    </select>
+    <!-- 根据菜单id和点赞数更新点赞数 -->
+    <update id="updateCommentZanCountById" parameterType="java.util.Map">
+       update d_wx_comment set zan=#{count} where id=#{commentId}
+    </update>
+    <!-- 根据店铺id和用户id获取留言 -->
+    <select id="getCommentByStoreIdAndUserId" parameterType="java.util.Map" resultMap="CommentInfoResult">
+       select * from d_wx_comment c where c.storeid=#{storeId} and c.userid=#{userId}
+    </select>
+    
+    <!-- 保存评论 -->
+    <insert id="saveComment" parameterType="java.util.Map">
+       insert into d_wx_comment (storeid,comment,grade,zan,userid,status) values (#{storeId},#{content},1,0,#{userId},0)
+    </insert>
+</mapper>
